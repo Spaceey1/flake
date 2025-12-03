@@ -29,7 +29,7 @@
 		eww
 		pkgsUnstable.equibop
 		wl-clipboard
-		rofi
+		pkgsUnstable.rofi
 		xwayland-satellite
 		spotifywm
 		playerctl
