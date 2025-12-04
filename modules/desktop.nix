@@ -8,7 +8,15 @@
 	services.displayManager.ly = {
 		enable = true;
 	};
-	programs.niri.enable = true;
+	programs.niri = {
+		enable = true;
+		package = pkgsUnstable.niri;
+	};
+	services.hardware.openrgb = {
+		enable = true;
+		motherboard = "amd";
+		package = pkgsUnstable.openrgb-with-all-plugins;
+	};
 	systemd.user.services = {
 		swaybg = {
 			serviceConfig = {
@@ -52,6 +60,7 @@
 		ffmpeg
 		yt-dlp
 		pkgsUnstable.mpv
+		telegram-desktop
 	];
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
@@ -59,4 +68,6 @@
 	};
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
 	services.flatpak.enable = true;
+	services.locate.enable = true;
+	services.locate.package = pkgs.plocate;
 }
