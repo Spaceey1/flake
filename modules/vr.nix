@@ -25,7 +25,6 @@
 	services.monado = {
 		enable = true;
 		defaultRuntime = true;
-		forceDefaultRuntime = true;
 		highPriority = true;
 		package = pkgs.monado;
 	};
