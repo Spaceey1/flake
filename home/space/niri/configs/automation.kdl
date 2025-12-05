@@ -1,0 +1,4 @@
+switch-events {
+    lid-close { spawn "hyprlock" "--immediate-render" "--no-fade-in"; }
+    //lid-open { spawn "notify-send" "The laptop lid is open!"; }
+}

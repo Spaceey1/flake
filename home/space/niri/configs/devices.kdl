@@ -1,0 +1,41 @@
+input {
+	mod-key "Super"
+	warp-mouse-to-focus
+	keyboard {
+		xkb {
+			layout "pl"
+		}
+		// Enable numlock on startup, omitting this setting disables it.
+		numlock
+		repeat-rate 80
+		repeat-delay 250
+	}
+
+	touchpad {
+		tap
+		natural-scroll
+		accel-profile "flat"
+		scroll-method "two-finger"
+		disabled-on-external-mouse
+	}
+
+	mouse {
+		accel-speed 0
+		accel-profile "flat"
+	}
+	focus-follows-mouse max-scroll-amount="0%"
+}
+output "HDMI-A-2" {
+	//scale 0.9
+	position x=1920 y=0
+	mode "1920x1080@120"
+	background-color "#00000000"
+}
+output "HDMI-A-1"{
+	//scale 0.9
+	position x=0 y=0
+	background-color "#00000000"
+}
+output "DP-2"{
+	//off
+}

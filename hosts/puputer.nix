@@ -23,7 +23,7 @@
 		"space" = {
 			isNormalUser = true;
 			shell = pkgs.fish;
-			extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+			extraGroups = [ "wheel" ];
 		};
 		"sharky" = {
 			isNormalUser = true;

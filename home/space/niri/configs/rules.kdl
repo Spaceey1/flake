@@ -1,0 +1,93 @@
+window-rule {
+	match app-id=r#"librewolf$"# title="^Picture-in-Picture$"
+	open-floating true
+}
+window-rule {
+	match app-id="org.gabmus.envision"
+	default-column-width { proportion 0.2; }
+}
+window-rule {
+	match app-id="org.telegram.desktop"
+	default-column-width { proportion 0.2; }
+}
+
+window-rule {
+	match app-id="steam" title="Friends List"
+	open-floating true
+}
+
+window-rule {
+	geometry-corner-radius 8
+	clip-to-geometry true
+	draw-border-with-background false
+	open-fullscreen false
+}
+
+layer-rule {
+	match namespace="^notifications$"
+	block-out-from "screencast"
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+overview {
+	zoom 0.4
+	workspace-shadow{
+		off
+	}
+}
+
+window-rule {
+	match is-window-cast-target=true
+
+	focus-ring {
+		active-color "#f38ba8"
+		inactive-color "#7d0d2d"
+	}
+
+	border {
+		inactive-color "#7d0d2d" 
+	}
+
+	shadow {
+		color "#7d0d2d70"
+	}
+
+	tab-indicator {
+		active-color "#f38ba8"
+		inactive-color "#7d0d2d"
+	}
+}
+
+window-rule{
+	match title="gsr notify"
+	open-focused false
+	open-on-output "HDMI-A-2"
+	block-out-from "screencast"
+	default-floating-position x=10 y=20 relative-to="top-right"
+}
+window-rule{
+	match title="gsr ui"
+	open-on-output "HDMI-A-2"
+}
+window-rule{
+	match app-id="io.github.Qalculate.qalculate-qt"
+	min-width 458
+	max-width 458
+	min-height 674
+	max-height 674
+	open-floating true
+}
+window-rule{
+	match title="gsr ui"
+	open-floating true
+	open-maximized false
+	open-fullscreen false
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}

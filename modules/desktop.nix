@@ -11,6 +11,7 @@
 	programs.niri = {
 		enable = true;
 		package = pkgsUnstable.niri;
+		#useNautilus = false;
 	};
 	services.hardware.openrgb = {
 		enable = true;
@@ -31,7 +32,6 @@
 		neovim
 		wget
 		librewolf
-		steam
 		kitty
 		swaybg
 		eww

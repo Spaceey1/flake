@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 {
-#Steam shit
-
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;  # Steam needs 32-bit

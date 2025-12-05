@@ -1,0 +1,35 @@
+layout {
+	struts{
+		left 16
+		right 16
+	}
+	gaps 8
+
+	preset-column-widths {
+		proportion 0.33333
+		proportion 0.5
+		proportion 0.66667
+	}
+
+	default-column-width { proportion 0.50; }
+
+	focus-ring {
+		width 1
+		active-color "rgb(0,153,153)"
+		inactive-color "#505050"
+	}
+	border {
+		off
+
+		width 4
+		active-color "#ffc87f"
+		inactive-color "#505050"
+		urgent-color "#9b0000"
+	}
+	background-color "transparent"
+	
+}
+cursor {
+    xcursor-theme "phinger-cursors-light"
+    xcursor-size 24
+}
