@@ -61,6 +61,7 @@
 		yt-dlp
 		pkgsUnstable.mpv
 		telegram-desktop
+		feh
 	];
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
@@ -70,4 +71,5 @@
 	services.flatpak.enable = true;
 	services.locate.enable = true;
 	services.locate.package = pkgs.plocate;
+	environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
