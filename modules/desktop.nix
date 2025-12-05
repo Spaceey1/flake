@@ -19,7 +19,7 @@
 		package = pkgsUnstable.openrgb-with-all-plugins;
 	};
 	systemd.user.services = {
-		swaybg = {
+		swaybgniri = {
 			serviceConfig = {
 				ExecStart = "${pkgs.swaybg}/bin/swaybg -i /home/space/wallpapers/see.png";
 				Restart = "on-abnormal";
@@ -48,7 +48,7 @@
 		pkgsUnstable.wleave
 		pwvucontrol
 		openrgb
-		btop
+		btop-cuda
 		hyprlock
 		nemo
 		mint-themes
@@ -62,6 +62,7 @@
 		pkgsUnstable.mpv
 		telegram-desktop
 		feh
+		blender
 	];
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
