@@ -12,14 +12,10 @@
 		../hardware-configuration.nix
 		../modules/base.nix
 		../modules/desktop.nix
-		../modules/filesystems.nix
 		../modules/steam.nix
-		../modules/vr.nix
-		../modules/waydroid.nix
-		../modules/rgb.nix
 	];
 
-	networking.hostName = "puputer";
+	networking.hostName = "lap";
 
 	users.users = {
 		"space" = {
@@ -27,21 +23,7 @@
 			shell = pkgs.fish;
 			extraGroups = [ "wheel" ];
 		};
-		"sharky" = {
-			isNormalUser = true;
-			shell = pkgs.fish;
-			extraGroups = [];
-		};
 	};
 	home-manager.users.space = import ../home/space/space.nix;
-	fileSystems."/home" = {
-		device = "/dev/disk/by-uuid/087ffb5f-76b1-4429-882e-1d2b544bb895";
-		fsType = "ext4";
-	};
-
-	fileSystems."/Stuffs" = {
-		device = "/dev/disk/by-uuid/aa65865d-d79a-4328-b805-2ce6556e2f48";
-		fsType = "ext4";
-	};
 }
 

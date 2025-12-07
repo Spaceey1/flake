@@ -13,11 +13,6 @@
 		package = pkgsUnstable.niri;
 		#useNautilus = false;
 	};
-	services.hardware.openrgb = {
-		enable = true;
-		motherboard = "amd";
-		package = pkgsUnstable.openrgb-with-all-plugins;
-	};
 	systemd.user.services = {
 		swaybgniri = {
 			serviceConfig = {
@@ -63,6 +58,7 @@
 		telegram-desktop
 		feh
 		blender
+		qpwgraph
 	];
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
