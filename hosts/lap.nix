@@ -12,11 +12,9 @@
 		../hardware-configuration.nix
 		../modules/base.nix
 		../modules/desktop.nix
-		../modules/steam.nix
+		../modules/mango.nix
 	];
-
 	networking.hostName = "lap";
-
 	users.users = {
 		"space" = {
 			isNormalUser = true;

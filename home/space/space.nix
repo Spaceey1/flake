@@ -5,6 +5,7 @@
 		./wleave.nix
 		./cursorThemes.nix
 		./niri.nix
+		./mango.nix
 	];
 	home.username = "space";
 	home.homeDirectory = "/home/space";

@@ -12,11 +12,13 @@
 		../hardware-configuration.nix
 		../modules/base.nix
 		../modules/desktop.nix
-		../modules/filesystems.nix
+		../modules/mango.nix
 		../modules/steam.nix
 		../modules/vr.nix
 		../modules/waydroid.nix
 		../modules/rgb.nix
+		../modules/vsc.nix
+		../modules/nvidia.nix
 	];
 
 	networking.hostName = "puputer";
