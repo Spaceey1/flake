@@ -4,9 +4,15 @@
 	imports = [
 		./wleave.nix
 		./cursorThemes.nix
+		./mango.nix 
 		./niri.nix
-		./mango.nix
+		./dunst.nix
+		./fish.nix
+		./git.nix
 	];
+	programs.mango.wallpaper = ./wallpapers/tri.png;
+
+
 	home.username = "space";
 	home.homeDirectory = "/home/space";
 	programs.home-manager.enable = true;

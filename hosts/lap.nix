@@ -12,6 +12,7 @@
 		../hardware-configuration.nix
 		../modules/base.nix
 		../modules/desktop.nix
+		../modules/niri.nix
 		../modules/mango.nix
 	];
 	networking.hostName = "lap";
@@ -21,6 +22,10 @@
 			shell = pkgs.fish;
 			extraGroups = [ "wheel" ];
 		};
+	};
+	hardware.graphics = {
+		enable = true;
+		extraPackages = [ pkgs.mesa ];
 	};
 	home-manager.users.space = import ../home/space/space.nix;
 }

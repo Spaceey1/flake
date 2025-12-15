@@ -4,11 +4,17 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 		nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
 		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-		home-manager.url = "github:nix-community/home-manager";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		mango = {
+			url = "github:DreamMaoMao/mango";
+			inputs.nixpkgs.follows = "nixpkgs-unstable";
+		};
 	};
 	
-	outputs = { self, nixpkgs, nixpkgs-xr, nixpkgs-unstable, home-manager, ... }:
+	outputs = { self, nixpkgs, nixpkgs-xr, nixpkgs-unstable, home-manager, mango, ... }:
 	
 	let
 	system = "x86_64-linux";
@@ -22,6 +28,19 @@
 			modules = [ 
 				./hosts/puputer.nix
 				home-manager.nixosModules.home-manager
+				mango.nixosModules.mango
+			];
+			specialArgs = {
+				inherit nixpkgs-xr;
+				inherit pkgsUnstable;
+			};
+		};
+		nixosConfigurations.lap = nixpkgs.lib.nixosSystem {
+			inherit system;
+			modules = [ 
+				./hosts/lap.nix
+				home-manager.nixosModules.home-manager
+				mango.nixosModules.mango
 			];
 			specialArgs = {
 				inherit nixpkgs-xr;

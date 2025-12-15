@@ -1,9 +1,10 @@
 { pkgs, pkgsUnstable, ... }:
 
 {
-	mango = {
-		url = "github:DreamMaoMao/mango";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-        programs.mango.enable = true;
+	programs.mango.enable = true;
+	environment.systemPackages = with pkgs; [
+		xdg-desktop-portal-wlr
+		grim
+		slurp
+	];	
 }

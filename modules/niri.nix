@@ -4,8 +4,8 @@
 	programs.niri = {
 		enable = true;
 		package = pkgsUnstable.niri;
-#useNautilus = false;
 	};
+	environment.systemPackages = [ pkgs.xdg-desktop-portal-gnome ];
 	systemd.user.services = {
 		swaybgniri = {
 			serviceConfig = {

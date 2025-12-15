@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
 niriFiles = builtins.readDir ./niri/configs;
@@ -11,5 +11,8 @@ builtins.concatStringsSep "\n"
  );
 in {
 	imports = [ ./niri/animations.nix ];
-	xdg.configFile."niri/config.kdl".text = files;
+	xdg.configFile."niri/config.kdl".text = ''
+	spawn-at-startup "${pkgs.dunst}/bin/dunst"
+	spawn-at-startup "${pkgs.waybar}/bin/waybar"
+	${files}'';
 }

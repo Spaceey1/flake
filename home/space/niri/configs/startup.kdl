@@ -1,9 +1,6 @@
 prefer-no-csd
 //spawn-at-startup "xwayland-satellite"
-spawn-at-startup "eww" "open" "bar"
-spawn-at-startup "dunst"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "/usr/bin/crystal-dock"
 //spawn-at-startup "spotifyd"
 environment {
 	XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT "1"

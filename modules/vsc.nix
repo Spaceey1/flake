@@ -1,14 +1,17 @@
-{ pkgs, ... }:
+{ pkgsUnstable, ... }:
 
 {
-	programs.vscode = {
-		package = pkgs.vscode-fhs;
-		enable = true;
-		extensions = with pkgs.vscode-extensions; [
-			bbenoist.nix
-			golang.go
-			twxs.cmake
-		];
+	#programs.vscode = {
+	#	package = pkgsUnstable.vscode;
+	#	enable = true;
+	#	extensions = with pkgsUnstable.vscode-extensions; [
+	#		bbenoist.nix
+	#		golang.go
+	#		twxs.cmake
+	#	];
 
-	};
+	#};
+	environment.systemPackages = [
+		pkgsUnstable.vscode
+	];
 }

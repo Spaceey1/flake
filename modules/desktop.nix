@@ -8,21 +8,6 @@
 	services.displayManager.ly = {
 		enable = true;
 	};
-	programs.niri = {
-		enable = true;
-		package = pkgsUnstable.niri;
-		#useNautilus = false;
-	};
-	systemd.user.services = {
-		swaybgniri = {
-			serviceConfig = {
-				ExecStart = "${pkgs.swaybg}/bin/swaybg -i /home/space/wallpapers/see.png";
-				Restart = "on-abnormal";
-			};
-			after = [ "niri.service" ];
-			wantedBy = [ "niri.service" ];
-		};
-	};
 	environment.systemPackages = with pkgs; [
 		neovim
 		wget
@@ -36,7 +21,6 @@
 		xwayland-satellite
 		spotifywm
 		playerctl
-		git
 		fastfetch
 		zoxide
 		phinger-cursors
@@ -59,13 +43,17 @@
 		feh
 		blender
 		qpwgraph
+		unzip
+		openssh
 	];
+	security.polkit.enable = true;
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
 		XCURSOR_SIZE = "24";
 	};
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
-	services.flatpak.enable = true;
+	xdg.portal.enable = true;
+	#services.flatpak.enable = true;
 	services.locate.enable = true;
 	services.locate.package = pkgs.plocate;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
