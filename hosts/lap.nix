@@ -9,7 +9,7 @@
 
 {
 	imports = [
-		../hardware-configuration.nix
+		./lap-hardware.nix
 		../modules/base.nix
 		../modules/desktop.nix
 		../modules/niri.nix

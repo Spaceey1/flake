@@ -9,6 +9,9 @@
 		./dunst.nix
 		./fish.nix
 		./git.nix
+		./kitty.nix
+		./rofi.nix
+		./fastfetch.nix
 	];
 	programs.mango.wallpaper = ./wallpapers/tri.png;
 

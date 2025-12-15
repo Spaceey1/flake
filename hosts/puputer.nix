@@ -9,7 +9,7 @@
 
 {
 	imports = [
-		../hardware-configuration.nix
+		./puputer-hardware.nix
 		../modules/base.nix
 		../modules/desktop.nix
 		../modules/mango.nix
