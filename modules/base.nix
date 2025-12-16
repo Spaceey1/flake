@@ -47,6 +47,9 @@
 	home-manager.extraSpecialArgs = {
 		inherit (config.networking) hostName;
 	};
+	environment.sessionVariables = {
+		DOTNET_CLI_TELEMETRY_OPTOUT = "1";
+	};
 # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
 	system.stateVersion = "25.05"; # don't change
 	

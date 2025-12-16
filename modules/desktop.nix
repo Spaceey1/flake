@@ -50,6 +50,7 @@
 	environment.sessionVariables = {
 		XCURSOR_THEME = "phinger-cursors-light";
 		XCURSOR_SIZE = "24";
+		GTK_THEME = "Mint-Y-Dark-Teal";
 	};
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
 	xdg.portal.enable = true;

@@ -1,30 +1,39 @@
-{ ... }:
-
+{ hostName, ... }:
+let
+sharedConfig = ''
+"battery": {
+	"format": "{capacity}%  "
+},
+"layer": "top",
+"modules-right": [
+		${if (hostName == "lap") then
+		''"battery",''
+		else
+		""}
+		"clock"
+	]
+'';
+in
 {
 	xdg.configFile."waybar/config-niri.jsonc".text = ''
 	{
 		"modules-left": [
 			"niri/workspaces"
 		],
-		"modules-right": [
-			"clock"
-		],
+		
 		"modules-center": [
 			"niri/window"
 		],
 		"niri/window": {
 			"format": "{title}"
 		},
-		"layer": "top"
+		${sharedConfig}
 	}
 	'';
 	xdg.configFile."waybar/config-mango.jsonc".text = ''
 	{
 		"modules-left": [
 			"ext/workspaces",
-		],
-		"modules-right": [
-			"clock"
 		],
 		"modules-center": [
 			"dwl/window",
@@ -39,7 +48,7 @@
 		"dwl/window": {
 			"format": "{title}"
 		},
-		"layer": "top"
+		${sharedConfig}
 	}
 	'';
 	xdg.configFile."waybar/style.css".text = ''
