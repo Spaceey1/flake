@@ -1,4 +1,4 @@
-{ hostName, ... }:
+{ hostName, pkgs, ... }:
 let
 sharedConfig = ''
 "battery": {
@@ -10,6 +10,7 @@ sharedConfig = ''
 		''"battery",''
 		else
 		""}
+		"tray",
 		"clock"
 	]
 '';
@@ -52,34 +53,39 @@ in
 	}
 	'';
 	xdg.configFile."waybar/style.css".text = ''
-	#waybar {
-		background-color: #131313;
-		color: white;
-	}
-	#workspaces button {
-		padding: 0 5px;
-		color: #9342e4;
-		background: transparent;
-		border-bottom: 2px solid transparent;
-	}
-	/* Active tag (viewed) */
-	#workspaces button.active {
-		color: #131313;
-		background-color: #9342e4;
-		border-radius: 4px;
-	}
-	
-	/* Tag with windows but not focused */
-	#workspaces button.occupied {
-		color: #cdc885;
-	}
-	/* Tag requesting attention */
-	#workspaces button.urgent {
-		background-color: #ef5e5e;
-		color: #282828;
-	}
-	#clock {
-		padding: 0px 10px;
-	}
-'';
+		#waybar {
+			background-color: #131313;
+			color: white;
+			font-family: "Commit Mono Nerd Font"
+		}
+		#workspaces button {
+			padding: 0 5px;
+			color: #9342e4;
+			background: transparent;
+			border-bottom: 2px solid transparent;
+		}
+		/* Active tag (viewed) */
+		#workspaces button.active {
+			color: #131313;
+			background-color: #9342e4;
+			border-radius: 4px;
+		}
+		
+		/* Tag with windows but not focused */
+		#workspaces button.occupied {
+			color: #cdc885;
+		}
+		/* Tag requesting attention */
+		#workspaces button.urgent {
+			background-color: #ef5e5e;
+			color: #282828;
+		}
+		#clock {
+			padding: 0px 10px;
+		}
+	'';
+	home.packages = with pkgs; [
+		nerd-fonts.commit-mono
+		waybar
+	];
 }
