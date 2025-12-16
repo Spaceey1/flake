@@ -14,6 +14,7 @@
 		./fastfetch.nix
 	];
 	programs.mango.wallpaper = ./wallpapers/tri.png;
+	programs.niri.wallpaper = ./wallpapers/tri.png;
 
 
 	home.username = "space";

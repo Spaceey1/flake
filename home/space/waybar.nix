@@ -1,18 +1,33 @@
 { ... }:
 
 {
-	xdg.configFile."waybar/config.jsonc".text = ''
+	xdg.configFile."waybar/config-niri.jsonc".text = ''
 	{
 		"modules-left": [
-			"ext/workspaces",
 			"niri/workspaces"
 		],
 		"modules-right": [
 			"clock"
 		],
 		"modules-center": [
-			"dwl/window",
 			"niri/window"
+		],
+		"niri/window": {
+			"format": "{title}"
+		},
+		"layer": "top"
+	}
+	'';
+	xdg.configFile."waybar/config-mango.jsonc".text = ''
+	{
+		"modules-left": [
+			"ext/workspaces",
+		],
+		"modules-right": [
+			"clock"
+		],
+		"modules-center": [
+			"dwl/window",
 		],
 		"ext/workspaces": {
 			"format": "{icon}",

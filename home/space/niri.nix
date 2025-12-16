@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 let
 niriFiles = builtins.readDir ./niri/configs;
@@ -11,8 +11,17 @@ builtins.concatStringsSep "\n"
  );
 in {
 	imports = [ ./niri/animations.nix ];
-	xdg.configFile."niri/config.kdl".text = ''
-	spawn-at-startup "${pkgs.dunst}/bin/dunst"
-	spawn-at-startup "${pkgs.waybar}/bin/waybar"
-	${files}'';
+	options.programs.niri = {
+		wallpaper = lib.mkOption {
+			description = "path to wallpaper";
+			type = lib.types.path;
+		};
+	};
+	config = {
+		xdg.configFile."niri/config.kdl".text = ''
+		spawn-at-startup "${pkgs.dunst}/bin/dunst"
+		spawn-at-startup "${pkgs.waybar}/bin/waybar" "-c" "${config.home.homeDirectory}/.config/waybar/config-niri.jsonc"
+		spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-i" "${config.programs.niri.wallpaper}"
+		${files}'';
+	};
 }

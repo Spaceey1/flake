@@ -19,7 +19,7 @@ in {
 	config = {
 		xdg.configFile."mango/config.conf".text = ''
 			exec-once=${pkgs.swaybg}/bin/swaybg -i ${config.programs.mango.wallpaper}
-			exec-once=${pkgs.waybar}/bin/waybar
+			exec-once=${pkgs.waybar}/bin/waybar -c ${config.home.homeDirectory}/.config/waybar/config-mango.jsonc
 			exec-once=${pkgs.dunst}/bin/dunst
 			exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 			exec-once=XDG_CURRENT_DESKTOP=sway ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal -r & ${pkgs.xdg-desktop-portal-wlr}/libexec/xdg-desktop-portal-wlr
