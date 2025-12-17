@@ -13,6 +13,7 @@
 		../modules/base.nix
 		../modules/desktop.nix
 		../modules/mango.nix
+		../modules/niri.nix
 		../modules/steam.nix
 		../modules/vr.nix
 		../modules/waydroid.nix

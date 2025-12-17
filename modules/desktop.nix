@@ -45,6 +45,8 @@
 		qpwgraph
 		unzip
 		openssh
+		gparted
+		avalonia-ilspy
 	];
 	security.polkit.enable = true;
 	environment.sessionVariables = {
