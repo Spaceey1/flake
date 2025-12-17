@@ -10,7 +10,7 @@ binds 	{
 	Mod+I { spawn "nemo"; }
 	Mod+E { spawn "librewolf"; }
 	Mod+P hotkey-overlay-title="Open rofi" { spawn "rofi" "-show" "combi" "-combi-modi" "window,drun" "-no-history" "-drun-match-fields" "name" "-no-tokenize"; }
-	Alt+Ctrl+Shift+BracketLeft hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+	Super+Ctrl+Shift+BracketLeft hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
 	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
 	XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
