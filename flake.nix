@@ -1,7 +1,7 @@
 {
 	description = "My NixOS config (multi-module)";
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 		nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
 		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 		home-manager = {
