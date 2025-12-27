@@ -39,7 +39,7 @@
 			input-field = [
 			{
 				size = "200, 50";
-				position = "0, -80";
+				position = "0, -400";
 				monitor = config.programs.hyprlock.mainMonitor;
 				fade_on_empty = false;
 				font_color = "0xffffffff";
@@ -48,6 +48,7 @@
 				outline_thickness = 1;
 				placeholder_text = ''Password...'';
 				shadow_passes = 2;
+				rounding = 8;
 			}
 			];
 		};
