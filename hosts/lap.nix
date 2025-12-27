@@ -28,5 +28,9 @@
 		extraPackages = [ pkgs.mesa ];
 	};
 	home-manager.users.space = import ../home/space/space.nix;
+	swapDevices = [{
+		device = "/var/lib/swapfile";
+		size = 8*1024; # 8 GB
+	}];
 }
 

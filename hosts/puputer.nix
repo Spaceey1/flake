@@ -41,10 +41,13 @@
 		device = "/dev/disk/by-uuid/087ffb5f-76b1-4429-882e-1d2b544bb895";
 		fsType = "ext4";
 	};
-
 	fileSystems."/Stuffs" = {
 		device = "/dev/disk/by-uuid/aa65865d-d79a-4328-b805-2ce6556e2f48";
 		fsType = "ext4";
 	};
+	swapDevices = [{
+		device = "/var/lib/swapfile";
+		size = 32*1024; # 32 GB
+	}];
 }
 
