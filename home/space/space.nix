@@ -12,9 +12,14 @@
 		./kitty.nix
 		./rofi.nix
 		./fastfetch.nix
+		./hyprlock.nix
 	];
 	programs.mango.wallpaper = ./wallpapers/tri.png;
 	programs.niri.wallpaper = ./wallpapers/tri.png;
+	programs.hyprlock = {
+		lockImage = ./wallpapers/tri.png;
+		mainMonitor = "HDMI-A-2";
+	};
 
 
 	home.username = "space";

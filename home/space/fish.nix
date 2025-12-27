@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, hostName, ... }:
 
 {
 	programs.fish = {
@@ -11,7 +11,7 @@
 		interactiveShellInit = ''
 			# zoxide
 			${pkgs.zoxide}/bin/zoxide init fish | source
-			'';
+		'';
 
 		functions = {
 			parentdir = ''
@@ -21,10 +21,10 @@
 				else
 					dirname (realpath "$p")
 						end
-						'';
+			'';
 			fish_prompt = ''
 				string join ' ' -- (set_color -b 009999) (prompt_pwd) (set_color normal) ':3 '
-				'';
+			'';
 
 			cf = ''
 				set -l pick (locate -i -- $argv | ${pkgs.skim}/bin/sk)
@@ -39,11 +39,15 @@
 						set -l name (basename -- "$path")
 						commandline -r -- (string escape -- "$name")
 						commandline -C 0
-						''; 
+			''; 
 
 			fish_greeting = ''
 				${pkgs.fastfetch}/bin/fastfetch
-				'';
+			'';
+
+			nixre = ''
+				sudo nixos-rebuild switch --flake /home/space/nix#${hostName}
+			'';
 		};
 	};
 

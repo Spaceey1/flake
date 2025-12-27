@@ -44,9 +44,19 @@
 		blender
 		qpwgraph
 		unzip
+		unrar
 		openssh
 		gparted
 		avalonia-ilspy
+		ltrace
+		(with dotnetCorePackages; combinePackages [
+		 sdk_9_0
+		 sdk_10_0
+		])
+		(pkgs.godot_4-mono.overrideAttrs (oldAttrs: {
+			dotnet-sdk = pkgs.dotnetCorePackages.sdk_9_0;
+		}))
+		qbittorrent
 	];
 	security.polkit.enable = true;
 	environment.sessionVariables = {
@@ -54,6 +64,11 @@
 		XCURSOR_SIZE = "24";
 		GTK_THEME = "Mint-Y-Dark-Teal";
 	};
+	programs.nix-ld.enable = true;
+	programs.nix-ld.libraries = with pkgs; [
+		dotnetCorePackages.runtime_9_0-bin
+	];
+
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
 	xdg.portal.enable = true;
 	#services.flatpak.enable = true;

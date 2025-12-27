@@ -1,29 +1,55 @@
-{...}:
+{ lib, config, ... }:
 {
-	xdg.configFile."kitty/kitty.conf".text = ''
-		background_opacity 0.90
-		background #121212
-		background_blur 1
+	
+	options.programs.hyprlock = {
+		lockImage = lib.mkOption {
+			description = "Lock image";
+			type = lib.types.nullOr lib.types.path;
+			default = null;
+		};
+		mainMonitor = lib.mkOption {
+			description = "Primary monitor";
+			type = lib.types.str;
+		};
+	};
+	
+	config = {
+		programs.hyprlock.enable = true;
+		programs.hyprlock.settings = {
+			general = {
+				hide_cursor = true;
+				ignore_empty_input = true;
+				fail_timeout = 10;
+			};
 
-		tab_bar_min_tabs 1
-		tab_bar_style powerline
-		tab_bar_margin_color #000000
-		tab_title_template "{index}: {title}"
-		active_tab_title_template "{fmt.bold}{fmt.fg.blue}{index}:{title}{fmt.fg.tab}"
-		confirm_os_window_close 0
-		enable_audio_bell no
-		cursor_trail 3
-		cursor_shape beam
-		mouse_hide_wait 0
+			animations.enabled = false;
 
-		clear_all_shortcuts yes
-		map ctrl+w close_tab
-		map ctrl+tab next_tab
-		map ctrl+shift+tab previous_tab
-		map ctrl+t new_tab_with_cwd
-		map super+shift+return launch --cwd=current --type=os-window
-		font_family Caskaydia Mono
-		map ctrl+shift+v paste_from_clipboard
-		map ctrl+shift+c copy_to_clipboard
-	'';
+			background = [
+			{
+				path = if (config.programs.hyprlock.lockImage == null) 
+					then 
+						"screenshot"
+					else 
+						toString config.programs.hyprlock.lockImage;
+				blur_passes = 3;
+				blur_size = 3;
+			}
+			];
+
+			input-field = [
+			{
+				size = "200, 50";
+				position = "0, -80";
+				monitor = config.programs.hyprlock.mainMonitor;
+				fade_on_empty = false;
+				font_color = "0xffffffff";
+				inner_color = "0x131313ff";
+				outer_color = "0xcdc885ff";
+				outline_thickness = 1;
+				placeholder_text = ''Password...'';
+				shadow_passes = 2;
+			}
+			];
+		};
+	};
 }
