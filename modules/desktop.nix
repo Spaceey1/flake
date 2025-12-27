@@ -47,15 +47,6 @@
 		unrar
 		openssh
 		gparted
-		avalonia-ilspy
-		ltrace
-		(with dotnetCorePackages; combinePackages [
-		 sdk_9_0
-		 sdk_10_0
-		])
-		(pkgs.godot_4-mono.overrideAttrs (oldAttrs: {
-			dotnet-sdk = pkgs.dotnetCorePackages.sdk_9_0;
-		}))
 		qbittorrent
 	];
 	security.polkit.enable = true;
@@ -71,7 +62,6 @@
 
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
 	xdg.portal.enable = true;
-	#services.flatpak.enable = true;
 	services.locate.enable = true;
 	services.locate.package = pkgs.plocate;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
