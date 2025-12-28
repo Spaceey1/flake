@@ -1,4 +1,4 @@
-{ hostName, pkgs, ... }:
+{ osConfig, pkgs, ... }:
 let
 sharedConfig = ''
 "battery": {
@@ -6,7 +6,7 @@ sharedConfig = ''
 },
 "layer": "top",
 "modules-right": [
-		${if (hostName == "lap") then
+		${if (osConfig.host.hasBattery) then
 		''"battery",''
 		else
 		""}

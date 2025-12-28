@@ -37,6 +37,7 @@
 		};
 	};
 	home-manager.users.space = import ../home/space/space.nix;
+	host.mainMonitor = "HDMI-A-2";
 	fileSystems."/home" = {
 		device = "/dev/disk/by-uuid/087ffb5f-76b1-4429-882e-1d2b544bb895";
 		fsType = "ext4";
