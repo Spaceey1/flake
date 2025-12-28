@@ -2,7 +2,8 @@
 let
 sharedConfig = ''
 "battery": {
-	"format": "{capacity}%  "
+	"format": "{capacity}% {icon}  ",
+	"format-icons": ["", "", "", "", ""]
 },
 "layer": "top",
 "modules-right": [
