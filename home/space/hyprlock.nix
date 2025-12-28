@@ -9,7 +9,8 @@
 		};
 		mainMonitor = lib.mkOption {
 			description = "Primary monitor";
-			type = lib.types.str;
+			type = lib.types.nullOr lib.types.str;
+			default = null;
 		};
 	};
 	
@@ -40,7 +41,7 @@
 			{
 				size = "200, 50";
 				position = "0, -400";
-				monitor = config.programs.hyprlock.mainMonitor;
+				monitor = lib.mkIf (config.programs.hyprlock.mainMonitor != null) config.programs.hyprlock.mainMonitor;
 				fade_on_empty = false;
 				font_color = "0xffffffff";
 				inner_color = "0x131313ff";

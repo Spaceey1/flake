@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, osConfig, ... }:
 
 {
 	imports = [
@@ -18,7 +18,7 @@
 	programs.niri.wallpaper = ./wallpapers/tri.png;
 	programs.hyprlock = {
 		lockImage = ./wallpapers/tri.png;
-		mainMonitor = "HDMI-A-2";
+		mainMonitor = osConfig.host.mainMonitor;
 	};
 
 
