@@ -75,6 +75,7 @@ window-rule{
 }
 window-rule{
 	match app-id="io.github.Qalculate.qalculate-qt"
+	match app-id="qalculate-gtk"
 	min-width 458
 	max-width 458
 	min-height 674

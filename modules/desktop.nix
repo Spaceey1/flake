@@ -60,6 +60,7 @@
 		openssh
 		gparted
 		qbittorrent
+		qalculate-gtk
 	];
 	security.polkit.enable = true;
 	environment.sessionVariables = {
