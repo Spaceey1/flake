@@ -25,7 +25,7 @@
 		nixosConfigurations.puter = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [ 
-				./hosts/puputer.nix
+				./hosts/puter.nix
 				home-manager.nixosModules.home-manager
 				mango.nixosModules.mango
 			];
