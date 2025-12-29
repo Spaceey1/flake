@@ -22,7 +22,7 @@
 		config.allowUnfree = true;
 	};
 	in {
-		nixosConfigurations.puputer = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.puter = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [ 
 				./hosts/puputer.nix

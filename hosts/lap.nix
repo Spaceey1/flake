@@ -1,11 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-# List packages installed in system profile.
-# You can use https://search.nixos.org/ to find more packages (and options).
-
-{ pkgs, ... }:
+{ pkgs,config, ... }:
 
 {
 	imports = [
@@ -16,8 +9,9 @@
 		../modules/mango.nix
 	];
 	networking.hostName = "lap";
+	host.mainUser = "space";
 	users.users = {
-		"space" = {
+		"${config.host.mainUser}" = {
 			isNormalUser = true;
 			shell = pkgs.fish;
 			extraGroups = [ "wheel" ];
