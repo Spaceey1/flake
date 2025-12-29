@@ -13,6 +13,7 @@
 		./rofi.nix
 		./fastfetch.nix
 		./hyprlock.nix
+		./nvim.nix
 	];
 	programs.mango.wallpaper = ./wallpapers/tri.png;
 	programs.niri.wallpaper = ./wallpapers/tri.png;
