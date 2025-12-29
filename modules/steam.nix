@@ -8,5 +8,6 @@
 		r2modman
 		mangohud
 		lutris
+		prismlauncher
 	];
 }

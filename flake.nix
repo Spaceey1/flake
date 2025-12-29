@@ -1,5 +1,4 @@
 {
-	description = "My NixOS config (multi-module)";
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 		nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
