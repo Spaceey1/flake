@@ -73,4 +73,7 @@
 		    background-color: var(--accent-bg-color);
 		}
 	'';
+	dconf.settings = {
+		"org/gnome/desktop/interface".color-scheme = "prefer-dark";
+	};
 }
