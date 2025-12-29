@@ -59,6 +59,7 @@
 		gparted
 		qbittorrent
 		qalculate-gtk
+		baobab
 	];
 	security.polkit.enable = true;
 	programs.nix-ld.enable = true;
