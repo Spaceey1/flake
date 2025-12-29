@@ -63,13 +63,13 @@
 	];
 	security.polkit.enable = true;
 	programs.nix-ld.enable = true;
-	programs.nix-ld.libraries = with pkgs; [
-		dotnetCorePackages.runtime_9_0-bin
-	];
-
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
 	xdg.portal.enable = true;
 	services.locate.enable = true;
 	services.locate.package = pkgs.plocate;
-	environment.sessionVariables.NIXOS_OZONE_WL = "1";
+	environment.sessionVariables = {
+		NIXOS_OZONE_WL = "1";
+		PROTON_ENABLE_WAYLAND="1";
+		ELECTRON_OZONE_PLATFORM_HINT="auto";
+	};
 }

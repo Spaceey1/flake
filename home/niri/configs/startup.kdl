@@ -1,12 +1,4 @@
 prefer-no-csd
-environment {
-	XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT "1"
-	PROTON_ENABLE_WAYLAND "1"
-	ELECTRON_OZONE_PLATFORM_HINT "auto"
-	DOTNET_CLI_TELEMETRY_OPTOUT "1"
-	GTK_THEME "Mint-Y-Darkish-Teal"
-	//LD_PRELOAD "/usr/lib/libgtk4-nocsd.so"
-}
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 hotkey-overlay{
 	skip-at-startup
