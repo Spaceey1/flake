@@ -21,7 +21,7 @@
 		enable = true;
 		extraPackages = [ pkgs.mesa ];
 	};
-	home-manager.users.space = import ../home/space/space.nix;
+	home-manager.users."${config.host.mainUser}"= import ../home/home.nix;
 	host.hasBattery = true;
 	swapDevices = [{
 		device = "/var/lib/swapfile";
