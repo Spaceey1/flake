@@ -15,7 +15,11 @@
 			default_session = initial_session;
 		};
 	};
-	
+	services.printing.enable = true;
+	services.pipewire = {
+			enable = true;
+			pulse.enable = true;
+	};
 	environment.systemPackages = with pkgs; [
 		neovim
 		wget

@@ -12,11 +12,15 @@
 			default = false;
 			description = "Whether the host is powered by a bettery";
 		};
+		mainUser = lib.mkOption {
+			type = lib.types.str;
+			description = "The primary user account";
+		};
 	};
 	config = {
 		nix.settings.experimental-features = [
 			"nix-command"
-				"flakes"
+			"flakes"
 		];
 		nixpkgs.config.allowUnfree = true;
 
@@ -39,13 +43,6 @@
 #   keyMap = "pl";
 #   useXkbConfig = true; # use xkb.options in tty.
 # };
-
-#Enable CUPS to print documents.
-		services.printing.enable = true;
-		services.pipewire = {
-			enable = true;
-			pulse.enable = true;
-		};
 
 		programs.fish.enable = true;
 

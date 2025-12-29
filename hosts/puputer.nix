@@ -22,10 +22,10 @@
 		../modules/nvidia.nix
 	];
 
-	networking.hostName = "puputer";
-
+	networking.hostName = "puter";
+	host.mainUser = "space";
 	users.users = {
-		"space" = {
+		"${config.host.mainUser}" = {
 			isNormalUser = true;
 			shell = pkgs.fish;
 			extraGroups = [ "wheel" ];
@@ -36,7 +36,7 @@
 			extraGroups = [];
 		};
 	};
-	home-manager.users.space = import ../home/space/space.nix;
+	home-manager.users."${config.host.mainUser}"= import ../home/home.nix;
 	host.mainMonitor = "HDMI-A-2";
 	fileSystems."/home" = {
 		device = "/dev/disk/by-uuid/087ffb5f-76b1-4429-882e-1d2b544bb895";

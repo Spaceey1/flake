@@ -15,6 +15,7 @@
 		./hyprlock.nix
 		./nvim.nix
 	];
+
 	programs.mango.wallpaper = ./wallpapers/tri.png;
 	programs.niri.wallpaper = ./wallpapers/tri.png;
 	programs.hyprlock = {
@@ -22,9 +23,8 @@
 		mainMonitor = osConfig.host.mainMonitor;
 	};
 
-
-	home.username = "space";
-	home.homeDirectory = "/home/space";
+	home.username = "${osConfig.host.mainUser}";
+	home.homeDirectory = "/home/${osConfig.host.mainUser}";
 	programs.home-manager.enable = true;
 	home.stateVersion = "25.05";
 }
