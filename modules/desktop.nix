@@ -35,14 +35,12 @@
 		playerctl
 		fastfetch
 		zoxide
-		phinger-cursors
 		pkgsUnstable.wleave
 		pwvucontrol
 		openrgb
 		btop-cuda
 		hyprlock
 		nemo
-		mint-themes
 		jq
 		dunst
 		libnotify
@@ -63,11 +61,6 @@
 		qalculate-gtk
 	];
 	security.polkit.enable = true;
-	environment.sessionVariables = {
-		XCURSOR_THEME = "phinger-cursors-light";
-		XCURSOR_SIZE = "24";
-		GTK_THEME = "Mint-Y-Dark-Teal";
-	};
 	programs.nix-ld.enable = true;
 	programs.nix-ld.libraries = with pkgs; [
 		dotnetCorePackages.runtime_9_0-bin
