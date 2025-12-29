@@ -5,9 +5,17 @@
 	imports = [
 		./python.nix
 	];
-	services.displayManager.ly = {
+	services.greetd = {
 		enable = true;
+		settings = rec {
+			initial_session = {
+				command = "${pkgs.niri}/bin/niri-session";
+				user = "space";
+			};
+			default_session = initial_session;
+		};
 	};
+	
 	environment.systemPackages = with pkgs; [
 		neovim
 		wget
