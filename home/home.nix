@@ -14,6 +14,7 @@
 		./fastfetch.nix
 		./hyprlock.nix
 		./nvim.nix
+		./gtk.nix
 	];
 
 	programs.mango.wallpaper = ./wallpapers/tri.png;

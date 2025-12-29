@@ -26,4 +26,5 @@ in {
 		spawn-at-startup "${pkgs.hyprlock}/bin/hyprlock"
 		${files}'';
 	};
+	
 }

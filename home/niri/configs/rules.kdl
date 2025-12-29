@@ -17,6 +17,12 @@ window-rule {
 }
 
 window-rule {
+	match app-id="org.prismlauncher.PrismLauncher" 
+	exclude title=r#"^Prism Launcher"#
+	open-floating true
+}
+
+window-rule {
 	geometry-corner-radius 8
 	clip-to-geometry true
 	draw-border-with-background false
@@ -87,6 +93,10 @@ window-rule{
 	open-floating true
 	open-maximized false
 	open-fullscreen false
+}
+window-rule {
+	match app-id="nemo"
+	open-floating true
 }
 
 debug {
