@@ -1,4 +1,4 @@
-{...}:
+{ pkgs, ...}:
 {
 	xdg.configFile."kitty/kitty.conf".text = ''
 		background_opacity 0.90
@@ -22,6 +22,7 @@
 		map ctrl+shift+tab previous_tab
 		map ctrl+t new_tab_with_cwd
 		map super+shift+return launch --cwd=current --type=os-window
+		map super+shift+i launch --type=background --cwd=current ${pkgs.nemo}/bin/nemo .
 		font_family Caskaydia Mono
 		map ctrl+shift+v paste_from_clipboard
 		map ctrl+shift+c copy_to_clipboard
