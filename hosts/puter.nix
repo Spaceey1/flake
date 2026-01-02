@@ -13,16 +13,12 @@
 		../modules/rgb.nix
 		../modules/vsc.nix
 		../modules/nvidia.nix
+		../modules/docker.nix
 	];
 
 	networking.hostName = "puter";
 	host.mainUser = "space";
 	users.users = {
-		"${config.host.mainUser}" = {
-			isNormalUser = true;
-			shell = pkgs.fish;
-			extraGroups = [ "wheel" ];
-		};
 		"sharky" = {
 			isNormalUser = true;
 			shell = pkgs.fish;

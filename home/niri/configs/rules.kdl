@@ -101,6 +101,7 @@ window-rule {
 window-rule {
 	match app-id="feh"
 	match app-id="mpv"
+	match app-id="com.saivert.pwvucontrol"
 	open-floating true
 }
 

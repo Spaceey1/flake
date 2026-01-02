@@ -22,6 +22,11 @@
 			"nix-command"
 			"flakes"
 		];
+		users.users."${config.host.mainUser}" = {
+			isNormalUser = true;
+			shell = pkgs.fish;
+			extraGroups = [ "wheel" "docker" ];
+		};
 		nixpkgs.config.allowUnfree = true;
 
 
