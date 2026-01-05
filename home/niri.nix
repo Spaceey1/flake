@@ -3,7 +3,7 @@
 let
 niriFiles = builtins.readDir ./niri/configs;
 
-config =
+niriConfig =
 builtins.concatStringsSep "\n"
 (map
  (name: builtins.readFile (./niri/configs/${name}))
@@ -17,7 +17,7 @@ in {
 			type = lib.types.path;
 		};
 	};
-	config = {
+	niriConfig = {
 		xdg.configFile."niri/config.kdl".text = ''
 		spawn-at-startup "${pkgs.dunst}/bin/dunst"
 		spawn-at-startup "${pkgs.waybar}/bin/waybar" "-c" "${config.home.homeDirectory}/.config/waybar/config-niri.jsonc"
