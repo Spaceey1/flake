@@ -17,14 +17,14 @@ in {
 			type = lib.types.path;
 		};
 	};
-	niriConfig = {
+	config = {
 		xdg.configFile."niri/config.kdl".text = ''
 		spawn-at-startup "${pkgs.dunst}/bin/dunst"
 		spawn-at-startup "${pkgs.waybar}/bin/waybar" "-c" "${config.home.homeDirectory}/.config/waybar/config-niri.jsonc"
 		spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-i" "${config.programs.niri.wallpaper}"
 		spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 		spawn-at-startup "${pkgs.hyprlock}/bin/hyprlock"
-		${config}'';
+		${niriConfig}'';
 	};
 	
 }
