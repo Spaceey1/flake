@@ -60,7 +60,9 @@
 		qbittorrent
 		qalculate-gtk
 		baobab
+		(if (config.host.hasBattery) then powertop else null)
 	];
+
 	security.polkit.enable = true;
 	programs.nix-ld.enable = true;
 	xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
