@@ -10,13 +10,6 @@
 	];
 	networking.hostName = "lap";
 	host.mainUser = "space";
-	users.users = {
-		"${config.host.mainUser}" = {
-			isNormalUser = true;
-			shell = pkgs.fish;
-			extraGroups = [ "wheel" ];
-		};
-	};
 	hardware.graphics = {
 		enable = true;
 		extraPackages = [ pkgs.mesa ];
