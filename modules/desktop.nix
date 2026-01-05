@@ -60,8 +60,7 @@
 		qbittorrent
 		qalculate-gtk
 		baobab
-		(if (config.host.hasBattery) then powertop else null)
-	];
+	] ++ lib.optional config.host.hasBattery powertop;
 
 	security.polkit.enable = true;
 	programs.nix-ld.enable = true;
