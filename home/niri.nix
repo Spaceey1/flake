@@ -10,7 +10,10 @@ builtins.concatStringsSep "\n"
  (builtins.attrNames niriFiles)
  );
 in {
-	imports = [ ./niri/animations.nix ];
+	imports = [ 
+	./niri/animations.nix
+	./niri/binds.nix
+	];
 	options.programs.niri = {
 		wallpaper = lib.mkOption {
 			description = "path to wallpaper";
