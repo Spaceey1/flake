@@ -17,10 +17,10 @@ binds  {
 
 	Super+Ctrl+Shift+BracketLeft hotkey-overlay-title="Lock the Screen" { spawn "${pkgs.hyprlock}/bin/hyprlock"; }
 
-	XF86AudioRaiseVolume allow-when-locked=true { spawn "${pkgs.pipewire}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-	XF86AudioLowerVolume allow-when-locked=true { spawn "${pkgs.pipewire}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-	XF86AudioMute        allow-when-locked=true { spawn "${pkgs.pipewire}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-	XF86AudioMicMute     allow-when-locked=true { spawn "${pkgs.pipewire}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+	XF86AudioRaiseVolume allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+	XF86AudioLowerVolume allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+	XF86AudioMute        allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+	XF86AudioMicMute     allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
 	XF86AudioPlay { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
 	XF86AudioNext { spawn "${pkgs.playerctl}/bin/playerctl" "next"; }
