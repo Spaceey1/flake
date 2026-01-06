@@ -14,6 +14,7 @@
 		../modules/vsc.nix
 		../modules/nvidia.nix
 		../modules/docker.nix
+		../modules/vms.nix
 	];
 
 	networking.hostName = "puter";
