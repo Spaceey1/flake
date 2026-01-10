@@ -21,7 +21,7 @@
 			telescope-nvim
 		];
 		extraLuaConfig = ''
-		vim.opt.undodir = ${config.home.homeDirectory} .. "/.vim/undodir"
+		vim.opt.undodir = "${config.home.homeDirectory}" .. "/.vim/undodir"
 		vim.opt.undofile = true
 		'' + builtins.readFile ./nvim/init-extra.lua;
 			
