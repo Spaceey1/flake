@@ -44,7 +44,6 @@
 		jq
 		dunst
 		libnotify
-		cargo
 		obs-studio
 		ffmpeg
 		yt-dlp
