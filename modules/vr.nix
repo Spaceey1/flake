@@ -39,9 +39,6 @@
 			pkgs.xorg.libxcb
 			];
 		});
-		#patchPhase = ''
-		#echo "Skipping patchPhase because upstream layout changed"
-		#'';
 		})
 
 	];
@@ -69,6 +66,7 @@
 				XRT_COMPOSITOR_USE_PRESENT_WAIT = "1";
 				U_PACING_COMP_TIME_FRACTION_PERCENT = "90";
 				XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = "1";
+				XRT_DEBUG_GUI="1";
 			};
 			serviceConfig = {
 				TimeoutStopSec = 1;
