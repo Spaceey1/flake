@@ -5,13 +5,13 @@
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;  # Steam needs 32-bit
-			extraPackages = with pkgs; [
+		extraPackages = with pkgs; [
 			vulkan-loader
-				mesa
-			];
+			mesa
+		];
 		extraPackages32 = with pkgs.pkgsi686Linux; [
 			vulkan-loader
-				mesa
+			mesa
 		];
 	};
 	services.xserver.videoDrivers = ["nvidia"];

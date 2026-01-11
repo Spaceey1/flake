@@ -1,17 +1,49 @@
-{ config, lib, pkgs, nixpkgs-xr, ... }:
+{ config, lib, nixpkgs-xr, pkgs, ... }:
 
 {
 	nixpkgs.overlays = [
 		nixpkgs-xr.overlays.default
-			(final: prev: {
-			# Fix for "File already exists in database" crash at startup
-			monado = prev.monado.overrideAttrs (old: {
-				buildInputs = builtins.filter (x: x != prev.opencv) old.buildInputs;
-				cmakeFlags = (old.cmakeFlags or []) ++ [
-				"-DBUILD_WITH_OPENCV=OFF"
-				];
-				});
-			 })
+		(final: prev: {
+		# Fix for "File already exists in database" crash at startup
+		monado = prev.monado.overrideAttrs (old: {
+			buildInputs = builtins.filter (x: x != prev.opencv) old.buildInputs;
+			cmakeFlags = (old.cmakeFlags or []) ++ [
+			"-DBUILD_WITH_OPENCV=OFF"
+			];
+			});
+		})
+		(final: prev: {
+		wlx-overlay-s = pkgs.rustPlatform.buildRustPackage (old: {
+			src = final.fetchFromGitHub {
+				owner = "wlx-team";
+				repo = "wayvr";
+				rev = "main";
+				sha256 = "sha256-MSfpZPZdezS4rtt1W1YgJusMuPxRLrkBCRvJfn8lnfE=";
+			};
+			pname = "wlx-overlay-s";
+			version = "latest";
+			cargoHash = "sha256-zqB2ybdpQEGdlkNin6mlUfaVRkpOtFl2CVCLAdKDMoQ=";
+			SHADERC_LIB_DIR = "${pkgs.shaderc.lib}/lib";
+			nativeBuildInputs = [ pkgs.pkg-config pkgs.rustPlatform.bindgenHook pkgs.cmake pkgs.shaderc pkgs.makeWrapper ];
+			buildInputs = [ pkgs.openssl pkgs.alsa-lib pkgs.pipewire pkgs.libclang pkgs.cmake pkgs.shaderc
+			pkgs.wayland
+			pkgs.libxkbcommon
+			pkgs.vulkan-loader
+			pkgs.libGL
+			pkgs.dbus
+			pkgs.openxr-loader
+			pkgs.openvr
+			pkgs.xorg.libX11
+			pkgs.xorg.libXext
+			pkgs.xorg.libXrandr
+			pkgs.xorg.libxcb
+			];
+		});
+		#patchPhase = ''
+		#echo "Skipping patchPhase because upstream layout changed"
+		#'';
+		})
+
 	];
 	environment.systemPackages = with pkgs; [
 		xrizer
@@ -47,7 +79,7 @@
 			description = "VR wlx-overlay-s";
 			path = [ pkgs.wlx-overlay-s ];
 			serviceConfig = {
-				ExecStart = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s";
+				ExecStart = "${pkgs.wlx-overlay-s}/bin/wayvr";
 				Restart = "on-abnormal";
 			};
 			bindsTo = [ "monado.service" ];
