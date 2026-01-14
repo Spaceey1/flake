@@ -33,12 +33,7 @@ map("n", "K", function ()
 end, opts)
 
 -------------------------------------------------
--- 3. Globals
--------------------------------------------------
-vim.g.copilot_enabled = 0
-
--------------------------------------------------
--- 4. Commands
+-- 3. Commands
 -------------------------------------------------
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w suda://%")
@@ -49,7 +44,7 @@ vim.api.nvim_create_user_command("Wq", function()
 end, {})
 
 -------------------------------------------------
--- 5. LSP / cmp / mason
+-- 4. LSP / cmp / mason
 -------------------------------------------------
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -67,9 +62,35 @@ cmp.setup({
 	},
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
-require("mason-lspconfig").setup()
+require("cmp_nvim_lsp").default_capabilities()
 vim.diagnostic.config({
 	virtual_text = true,
 })
+
+-------------------------------------------------
+-- 5. Debugger
+-------------------------------------------------
+
+-- Essential DAP Plugins
+-- Add these to your plugin manager (e.g., via nixpkgs plugins or lazy)
+local dap = require('dap')
+local dapui = require('dapui')
+
+dapui.setup()
+
+-- Auto-open/close UI
+dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
+
+-- Language specific "Auto-Config"
+-- Example for Python (if using debugpy from Option 1)
+dap.configurations.python = {
+  {
+    type = 'python',
+    request = 'launch',
+    name = "Launch file",
+    program = "${file}",
+    pythonPath = function() return 'python' end,
+  },
+}

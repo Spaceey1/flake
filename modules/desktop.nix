@@ -59,6 +59,8 @@
 		qbittorrent
 		qalculate-gtk
 		baobab
+		nil
+		rofi-emoji
 	] ++ lib.optional config.host.hasBattery powertop;
 
 	security.polkit.enable = true;

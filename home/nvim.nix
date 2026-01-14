@@ -19,6 +19,8 @@
 			yuck-vim
 			plenary-nvim
 			telescope-nvim
+			nvim-dap
+			nvim-dap-ui
 		];
 		extraLuaConfig = ''
 		vim.opt.undodir = "${config.home.homeDirectory}" .. "/.vim/undodir"

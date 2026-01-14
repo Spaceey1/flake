@@ -15,6 +15,7 @@
 		./hyprlock.nix
 		./nvim.nix
 		./gtk.nix
+		./helix.nix
 	];
 
 	programs.mango.wallpaper = ./wallpapers/tri.png;
