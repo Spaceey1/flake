@@ -25,7 +25,7 @@
         keys = {
           insert = {
             #tab = "completion";
-            ret = "completion";
+            #ret = "completion";
           };
           normal = {
             "=" = ":format";
