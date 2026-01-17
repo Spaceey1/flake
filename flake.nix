@@ -13,7 +13,7 @@
 		};
 	};
 	
-	outputs = { self, nixpkgs, nixpkgs-xr, nixpkgs-unstable, home-manager, mango, ... }:
+	outputs = { nixpkgs, nixpkgs-xr, nixpkgs-unstable, home-manager, mango, ... }:
 	
 	let
 	system = "x86_64-linux";

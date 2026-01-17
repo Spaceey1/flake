@@ -1,4 +1,4 @@
-{ lib,pkgs, ... }:
+{ lib,pkgs,pkgsUnstable, ... }:
 
 let
 bindsKdl = ''
@@ -11,9 +11,9 @@ binds  {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
 	Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "${pkgs.kitty}/bin/kitty"; }
-	Mod+I { spawn "${pkgs.nemo}/bin/nemo"; }   // if using an overlay for nemo
-	Mod+E { spawn "${pkgs.librewolf}/bin/librewolf"; }   // may require unstable/overlay
-	Mod+P hotkey-overlay-title="Open rofi" { spawn "${pkgs.rofi}/bin/rofi" "-show" "combi" "-combi-modi" "window,drun" "-no-history" "-drun-match-fields" "name" "-no-tokenize"; }
+	Mod+I { spawn "${pkgs.nemo}/bin/nemo"; }
+	Mod+E { spawn "${pkgs.librewolf}/bin/librewolf"; }
+	Mod+P hotkey-overlay-title="Open rofi" { spawn "${pkgsUnstable.rofi}/bin/rofi" "-show" "combi" "-combi-modi" "window,drun" "-no-history" "-drun-match-fields" "name" "-no-tokenize"; }
 
 	Super+Ctrl+Shift+BracketLeft hotkey-overlay-title="Lock the Screen" { spawn "${pkgs.hyprlock}/bin/hyprlock"; }
 
@@ -31,7 +31,7 @@ binds  {
 	XF86MonBrightnessDown { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "10%-"; }
 
 	Mod+Escape { spawn "${pkgs.dunst}/bin/dunstctl" "close-all"; }
-	Mod+BracketLeft { spawn "${pkgs.rofi}/bin/rofi" "-show" "emoji" "-emoji-mode" "insert_no_copy"; }
+	Mod+BracketLeft { spawn "${pkgsUnstable.rofi}/bin/rofi" "-show" "emoji" "-emoji-mode" "insert_no_copy"; }
 
 	Mod+Tab { toggle-overview; }
 	Mod+Shift+Q { close-window; }
@@ -166,4 +166,3 @@ binds  {
 in {
   xdg.configFile."niri/config.kdl".text = lib.mkAfter bindsKdl;
 }
-

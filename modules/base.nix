@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
 	options.host = {
@@ -62,6 +62,8 @@
 		systemd.services.sshd.wantedBy = lib.mkForce [ ];
 		home-manager.extraSpecialArgs = {
 			inherit (config.networking) hostName;
+			inherit pkgsUnstable;
+			inherit pkgs;
 		};
 		environment.sessionVariables = {
 			DOTNET_CLI_TELEMETRY_OPTOUT = "1";

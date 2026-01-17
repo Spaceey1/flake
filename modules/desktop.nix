@@ -10,7 +10,7 @@
 		settings = rec {
 			initial_session = {
 				command = "${pkgs.niri}/bin/niri-session";
-				user = "space";
+				user = config.host.mainUser;
 			};
 			default_session = initial_session;
 		};
@@ -29,7 +29,6 @@
 		eww
 		pkgsUnstable.equibop
 		wl-clipboard
-		pkgsUnstable.rofi
 		xwayland-satellite
 		spotifywm
 		playerctl
@@ -59,8 +58,6 @@
 		qbittorrent
 		qalculate-gtk
 		baobab
-		nil
-		rofi-emoji
 	] ++ lib.optional config.host.hasBattery powertop;
 
 	security.polkit.enable = true;
