@@ -48,6 +48,12 @@
 			nixre = ''
 				sudo nixos-rebuild switch --flake /home/space/nix#${hostName}
 			'';
+			openminecraft = ''
+				sudo iptables -I INPUT -p tcp --dport 25565 -j ACCEPT
+			'';
+			closeminecraft = ''
+				sudo iptables -D INPUT -p tcp --dport 25565 -j ACCEPT
+			'';
 		};
 	};
 
@@ -59,4 +65,3 @@
 		mlocate
 	];
 }
-
