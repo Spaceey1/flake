@@ -2,8 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-     via
+    via
   ];
   services.udev.packages = [ pkgs.via ];
 }
-

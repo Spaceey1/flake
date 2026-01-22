@@ -1,4 +1,4 @@
 final: prev: {
   #name =
-    #prev.callPackage ../pkgs/name.nix { };
+  #prev.callPackage ../pkgs/name.nix { };
 }

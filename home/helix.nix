@@ -133,6 +133,9 @@
           };
       };
     };
-    home.packages = [ pkgs.lldb pkgs.nil ];
+    home.packages = [
+      pkgs.lldb
+      pkgs.nil
+    ];
   };
 }
