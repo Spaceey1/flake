@@ -5,7 +5,6 @@
     ./puputer-hardware.nix
     ../modules/base.nix
     ../modules/desktop.nix
-    ../modules/mango.nix
     ../modules/niri.nix
     ../modules/steam.nix
     ../modules/vr.nix
@@ -39,7 +38,7 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 32 * 1024; # 32 GB
+      size = 8 * 1024; # 32 GB
     }
   ];
 }
