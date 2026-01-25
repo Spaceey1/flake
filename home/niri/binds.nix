@@ -17,7 +17,7 @@ let
     	Mod+Shift+Slash { show-hotkey-overlay; }
 
     	Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "${pkgs.kitty}/bin/kitty"; }
-    	Mod+I { spawn "${pkgs.nemo}/bin/nemo"; }
+    	Mod+I { spawn "${pkgs.nemo-with-extensions}/bin/nemo"; }
     	Mod+E { spawn "${pkgs.librewolf}/bin/librewolf"; }
     	Mod+P hotkey-overlay-title="Open rofi" { spawn "${config.programs.rofi.finalPackage}/bin/rofi" "-show" "combi" "-combi-modi" "window,drun" "-no-history" "-drun-match-fields" "name" "-no-tokenize"; }
 

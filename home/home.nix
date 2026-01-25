@@ -21,6 +21,7 @@
     ./nvim.nix
     ./gtk.nix
     ./helix.nix
+    ./nemo.nix
   ];
 
   programs.mango.wallpaper = ./wallpapers/tri.png;
