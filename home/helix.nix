@@ -12,7 +12,7 @@
           lsp.display-messages = true;
           auto-format = true;
           trim-final-newlines = true;
-          completion-replace = true;
+          completion-replace = false;
           completion-trigger-len = 1;
           cursor-shape = {
             insert = "bar";
