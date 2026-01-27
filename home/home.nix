@@ -1,6 +1,7 @@
 {
   config,
   pkgsUnstable,
+  pkgs,
   osConfig,
   ...
 }:
@@ -35,4 +36,8 @@
   home.homeDirectory = "/home/${osConfig.host.mainUser}";
   programs.home-manager.enable = true;
   home.stateVersion = "25.05";
+
+  home.packages = with pkgs; [
+     teamspeak6-client   
+  ];
 }
