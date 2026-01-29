@@ -64,6 +64,7 @@
       qbittorrent
       qalculate-gtk
       baobab
+      pinta
     ]
     ++ lib.optional config.host.hasBattery powertop;
 
