@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgsUnstable,
   config,
   ...
 }:
@@ -24,49 +23,7 @@
     enable = true;
     pulse.enable = true;
   };
-  environment.systemPackages =
-    with pkgs;
-    [
-      neovim
-      wget
-      librewolf
-      kitty
-      swaybg
-      eww
-      pkgsUnstable.equibop
-      wl-clipboard
-      xwayland-satellite
-      spotifywm
-      playerctl
-      fastfetch
-      zoxide
-      pkgsUnstable.wleave
-      pwvucontrol
-      openrgb
-      btop-cuda
-      hyprlock
-      nemo
-      jq
-      dunst
-      libnotify
-      obs-studio
-      ffmpeg
-      yt-dlp
-      pkgsUnstable.mpv
-      telegram-desktop
-      feh
-      blender
-      qpwgraph
-      unzip
-      unrar
-      openssh
-      gparted
-      qbittorrent
-      qalculate-gtk
-      baobab
-      pinta
-    ]
-    ++ lib.optional config.host.hasBattery powertop;
+  
 
   security.polkit.enable = true;
   programs.nix-ld.enable = true;

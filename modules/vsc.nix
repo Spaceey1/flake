@@ -1,4 +1,4 @@
-{ pkgsUnstable, ... }:
+{ pkgs, ... }:
 
 {
   #programs.vscode = {
@@ -12,6 +12,6 @@
 
   #};
   environment.systemPackages = [
-    pkgsUnstable.vscode
+    pkgs.vscode
   ];
 }

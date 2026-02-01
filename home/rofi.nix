@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ pkgs, ... }:
 
 {
   programs.rofi = {
@@ -6,7 +6,7 @@
     plugins = [
       pkgs.rofi-emoji
     ];
-    package = pkgsUnstable.rofi;
+    package = pkgs.rofi;
   };
 
   xdg.configFile."rofi/config.rasi".text = ''

@@ -1,59 +1,47 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "pkgs";
     };
     mango = {
       url = "github:DreamMaoMao/mango";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "pkgs";
     };
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs =
-    {
-      nixpkgs,
-      nixpkgs-xr,
-      nixpkgs-unstable,
-      home-manager,
-      mango,
-      ...
-    }:
-
+    inputs:
     let
-      system = "x86_64-linux";
-      pkgsUnstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      lib = inputs.pkgs.lib;
+      hostsDir = ./hosts;
+      dirContents = builtins.readDir hostsDir;
+      isNixFile = name: type: type == "regular" && lib.hasSuffix ".nix" name;
+      nixFiles = lib.filterAttrs isNixFile dirContents;
+      mkHost =
+        filename: type:
+        let
+          hostname = lib.removeSuffix ".nix" filename;
+        in
+        lib.nameValuePair hostname (
+          lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs;
+              inherit hostname;
+            };
+            modules = [
+              inputs.home-manager.nixosModules.home-manager
+              (hostsDir + "/${filename}")
+              ./modules/base.nix
+            ];
+          }
+        );
     in
     {
-      nixosConfigurations.puter = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/puter.nix
-          home-manager.nixosModules.home-manager
-          mango.nixosModules.mango
-        ];
-        specialArgs = {
-          inherit nixpkgs-xr;
-          inherit pkgsUnstable;
-        };
-      };
-      nixosConfigurations.lap = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/lap.nix
-          home-manager.nixosModules.home-manager
-          mango.nixosModules.mango
-        ];
-        specialArgs = {
-          inherit nixpkgs-xr;
-          inherit pkgsUnstable;
-        };
-      };
+      nixosConfigurations = lib.mapAttrs' mkHost nixFiles;
     };
 }

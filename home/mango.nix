@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  hostName,
+  osConfig,
   lib,
   ...
 }:
@@ -28,7 +28,7 @@ in
       			exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
       			exec-once=XDG_CURRENT_DESKTOP=sway ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal -r & ${pkgs.xdg-desktop-portal-wlr}/libexec/xdg-desktop-portal-wlr
       			${
-           if (hostName == "puputer") then
+           if (osConfig.networking.hostName == "puter") then
              "
 				bind=Alt, H,focusmon,HDMI-A-1
 				bind=Alt, L,focusmon,HDMI-A-2

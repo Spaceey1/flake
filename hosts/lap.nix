@@ -2,11 +2,12 @@
 
 {
   imports = [
-    ./lap-hardware.nix
+    ./hardware/lap.nix
     ../modules/base.nix
     ../modules/desktop.nix
     ../modules/niri.nix
-    ../modules/mango.nix
+    ../modules/bluetooth.nix
+    ../modules/home-manager.nix
   ];
   networking.hostName = "lap";
   host.mainUser = "space";
@@ -14,7 +15,6 @@
     enable = true;
     extraPackages = [ pkgs.mesa ];
   };
-  home-manager.users."${config.host.mainUser}" = import ../home/home.nix;
   host.hasBattery = true;
   swapDevices = [
     {

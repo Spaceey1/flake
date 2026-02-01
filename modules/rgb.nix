@@ -1,12 +1,12 @@
-{ pkgsUnstable, ... }:
+{ pkgs, ... }:
 {
   services.hardware.openrgb = {
     enable = true;
     motherboard = "amd";
-    package = pkgsUnstable.openrgb-with-all-plugins;
+    package = pkgs.openrgb-with-all-plugins;
     server.port = 6742;
   };
-  environment.systemPackages = with pkgsUnstable; [
+  environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
   ];
 }

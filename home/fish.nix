@@ -1,7 +1,6 @@
 {
-  config,
+  osConfig,
   pkgs,
-  hostName,
   ...
 }:
 
@@ -47,18 +46,24 @@
         			'';
 
       fish_greeting = ''
-        				${pkgs.fastfetch}/bin/fastfetch
-        			'';
-
+        ${pkgs.fastfetch}/bin/fastfetch
+      '';
       nixre = ''
-        				sudo nixos-rebuild switch --flake /home/space/nix#${hostName}
-        			'';
+        if sudo nixos-rebuild switch --flake /home/space/nix#${osConfig.networking.hostName}
+          ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Success"
+        else
+           ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Fail"       
+        end
+      '';
       openminecraft = ''
-        				sudo iptables -I INPUT -p tcp --dport 25565 -j ACCEPT
-        			'';
+        sudo iptables -I INPUT -p tcp --dport 25565 -j ACCEPT
+      '';
       closeminecraft = ''
-        				sudo iptables -D INPUT -p tcp --dport 25565 -j ACCEPT
-        			'';
+        sudo iptables -D INPUT -p tcp --dport 25565 -j ACCEPT
+      '';
+      ns = ''
+        nix-shell -p $argv
+      '';
     };
   };
 

@@ -1,9 +1,9 @@
-{ pkgs, pkgsUnstable, ... }:
+{ pkgs, ... }:
 
 {
   programs.niri = {
     enable = true;
-    package = pkgsUnstable.niri;
+    package = pkgs.niri;
   };
   environment.systemPackages = [ pkgs.xdg-desktop-portal-gnome ];
 }

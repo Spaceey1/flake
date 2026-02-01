@@ -1,8 +1,6 @@
 {
-  config,
-  pkgsUnstable,
-  pkgs,
   osConfig,
+  pkgs,
   ...
 }:
 
@@ -19,7 +17,6 @@
     ./rofi.nix
     ./fastfetch.nix
     ./hyprlock.nix
-    ./nvim.nix
     ./gtk.nix
     ./helix.nix
     ./xdg.nix
@@ -31,13 +28,52 @@
     lockImage = ./wallpapers/tri.png;
     mainMonitor = osConfig.host.mainMonitor;
   };
-
   home.username = "${osConfig.host.mainUser}";
   home.homeDirectory = "/home/${osConfig.host.mainUser}";
   programs.home-manager.enable = true;
   home.stateVersion = "25.05";
 
-  home.packages = with pkgs; [
-     teamspeak6-client   
-  ];
+  home.packages =
+    with pkgs;
+    [
+      teamspeak6-client
+      wget
+      librewolf
+      kitty
+      swaybg
+      eww
+      equibop
+      wl-clipboard
+      xwayland-satellite
+      spotifywm
+      playerctl
+      fastfetch
+      zoxide
+      wleave
+      pwvucontrol
+      openrgb
+      btop-cuda
+      hyprlock
+      nemo
+      jq
+      dunst
+      libnotify
+      obs-studio
+      ffmpeg
+      yt-dlp
+      mpv
+      telegram-desktop
+      feh
+      blender
+      qpwgraph
+      unzip
+      unrar
+      openssh
+      gparted
+      qbittorrent
+      qalculate-gtk
+      baobab
+      pinta
+    ]
+    ++ lib.optional osConfig.host.hasBattery powertop;
 }
