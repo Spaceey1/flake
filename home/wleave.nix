@@ -47,7 +47,7 @@ in
   xdg.configFile."wleave/style.css".text = ''
         *{
           all:unset;
-    background-color: rgba(${colors.black.rgbRaw}, 0.6);
+          background-color: rgba(${colors.black.rgbRaw}, 0.6);
         }
     		window {
     			background-color: rgba(${colors.black.rgbRaw}, 0.6);

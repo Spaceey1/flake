@@ -34,9 +34,10 @@ in
       inherit theme;
     };
     gtk4 = {
-      inherit iconTheme;
-      inherit cursorTheme;
-      inherit colorScheme;
+      enable = false;
+      # inherit iconTheme;
+      # inherit cursorTheme;
+      # inherit colorScheme;
       # inherit theme; # assholes break themes
     };
   };
