@@ -40,15 +40,6 @@ in
          }
       			${files}
       		'';
-    xdg.configFile."xdg-desktop-portal".text = ''
-      		[preferred]
-      		default=gtk
-      		org.freedesktop.impl.portal.Screenshot=wlr
-      		org.freedesktop.impl.portal.ScreenCast=wlr
-      		'';
-    home.sessionVariables = {
-      PROTON_ENABLE_WAYLAND = "1";
-    };
   };
   imports = [ ./waybar.nix ];
 }

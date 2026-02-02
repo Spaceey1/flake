@@ -28,7 +28,6 @@
   security.polkit.enable = true;
   programs.nix-ld.enable = true;
   xdg.icons.fallbackCursorThemes = [ "phinger-cursors-light" ];
-  xdg.portal.enable = true;
   services.locate.enable = true;
   services.locate.package = pkgs.plocate;
   environment.sessionVariables = {

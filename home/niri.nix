@@ -16,6 +16,7 @@ in
   imports = [
     ./niri/animations.nix
     ./niri/binds.nix
+    ./waybar.nix
   ];
   options.programs.niri = {
     wallpaper = lib.mkOption {

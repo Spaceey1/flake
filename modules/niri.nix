@@ -5,5 +5,4 @@
     enable = true;
     package = pkgs.niri;
   };
-  environment.systemPackages = [ pkgs.xdg-desktop-portal-gnome ];
 }

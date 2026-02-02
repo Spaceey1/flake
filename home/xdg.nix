@@ -59,5 +59,29 @@ in
     home.packages = [
       xdg-terminal-exec
     ];
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gnome # the screensharing necessary evil
+      ];
+      config = {
+        common = {
+          default = [
+            "gtk"
+            "wlr"
+            "gnome"
+          ];
+        };
+        niri = {
+          default = [
+            "gtk"
+            "gnome"
+          ];
+        };
+      };
+    };
   };
 }

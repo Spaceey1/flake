@@ -10,6 +10,7 @@
     ../modules/home-manager.nix
   ];
   networking.hostName = "lap";
+  host.mainMonitor = "eDP-1";
   host.mainUser = "space";
   hardware.graphics = {
     enable = true;

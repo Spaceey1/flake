@@ -1,9 +1,12 @@
 { pkgs, ... }:
+let
+  colors = import ./colors.nix;
+in
 {
   xdg.configFile."kitty/kitty.conf".text = ''
-    		background_opacity 0.90
-    		background #121212
-    		background_blur 1
+    		#background_opacity 0.90
+    		background_opacity 1
+    		background ${colors.black.hex}
 
     		tab_bar_min_tabs 1
     		tab_bar_style powerline
