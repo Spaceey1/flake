@@ -47,16 +47,16 @@ in
   xdg.configFile."wleave/style.css".text = ''
         *{
           all:unset;
-          background-color: rgba(${colors.black.rgbRaw}, 0.6);
+          background-color: rgba(${colors.palette.background.rgbRaw}, 0.6);
         }
     		window {
-    			background-color: rgba(${colors.black.rgbRaw}, 0.6);
+    			background-color: rgba(${colors.palette.background.rgbRaw}, 0.6);
     		}
     		
     		button {
-    			color: ${colors.white.hex};
-    			background-color: ${colors.black.hex};
-    			border: 1px ${colors.magenta.hex} solid;
+    			color: ${colors.palette.text.hex};
+    			background-color: ${colors.palette.background.hex};
+    			border: 1px ${colors.palette.primary.hex} solid;
     			border-radius: 8px;
     			padding: 10px;
     		}
@@ -66,7 +66,7 @@ in
     		}
     		
     		button label.keybind {
-    			color: ${colors.magenta.hex};
+    			color: ${colors.palette.primary.hex};
     			font-size: 20px;
     			font-family: monospace;
     		}

@@ -49,16 +49,16 @@ in
 
       	focus-ring {
       		width 1
-      		active-color "${colors.magenta.hex}"
-      		inactive-color "${colors.gray.hex}"
+      		active-color "${colors.palette.primary.hex}"
+      		inactive-color "${colors.baseColors.gray.hex}"
       	}
       	border {
       		off
 
       		width 4
-      		active-color "${colors.magenta.hex}"
-      		inactive-color "${colors.gray.hex}"
-      		urgent-color "${colors.red.hex}"
+      		active-color "${colors.palette.primary.hex}"
+      		inactive-color "${colors.baseColors.gray.hex}"
+      		urgent-color "${colors.baseColors.red.hex}"
       	}
       	background-color "transparent"
       	

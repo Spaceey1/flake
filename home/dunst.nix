@@ -8,8 +8,8 @@ let
     		[global]
     		corner_radius = 8
     		frame_width = 1
-    		frame_color = "${colors.magenta.hex}"
-    		background = "${colors.black.hex}"
+    		frame_color = "${colors.palette.primary.hex}"
+    		background = "${colors.palette.background.hex}"
     		monitor = "${osConfig.host.mainMonitor}"
     		history_length = 0
     		origin=top-right

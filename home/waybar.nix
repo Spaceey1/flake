@@ -53,31 +53,31 @@ in
     	'';
   xdg.configFile."waybar/style.css".text = ''
     		#waybar {
-    			background-color: ${colors.black.hex};
-    			color: ${colors.white.hex};
+    			background-color: ${colors.palette.background.hex};
+    			color: ${colors.palette.text.hex};
     			font-family: "Commit Mono Nerd Font"
     		}
     		#workspaces button {
     			padding: 0 5px;
-    			color: ${colors.magenta.hex};
+    			color: ${colors.palette.primary.hex};
     			background: transparent;
     			border-bottom: 2px solid transparent;
     		}
     		/* Active tag (viewed) */
     		#workspaces button.active {
-    			color: ${colors.black.hex};
-    			background-color: ${colors.magenta.hex};
+    			color: ${colors.palette.background.hex};
+    			background-color: ${colors.palette.primary.hex};
     			border-radius: 4px;
     		}
     		
     		/* Tag with windows but not focused */
     		#workspaces button.occupied {
-    			color: ${colors.magenta.hex};
+    			color: ${colors.palette.primary.hex};
     		}
     		/* Tag requesting attention */
     		#workspaces button.urgent {
-    			background-color: ${colors.red.hex};
-    			color: ${colors.black.hex};
+    			background-color: ${colors.baseColors.red.hex};
+    			color: ${colors.palette.background.hex};
     		}
     		#clock {
     			padding: 0px 10px;

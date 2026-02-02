@@ -30,7 +30,9 @@ let
     map."${c}";
 
   hexPairToInt =
-    s: ((hexDigitToInt (builtins.substring 0 1 s)) * 16 + (hexDigitToInt (builtins.substring 1 1 s))) / 255.0;
+    s:
+    ((hexDigitToInt (builtins.substring 0 1 s)) * 16 + (hexDigitToInt (builtins.substring 1 1 s)))
+    / 255.0;
 
   hexToRgb =
     hex:
@@ -42,31 +44,32 @@ let
       g = hexPairToInt (builtins.substring 2 2 cleanHex);
       b = hexPairToInt (builtins.substring 4 2 cleanHex);
     };
-
-  rawPalette = {
-    gray = "#665c54";
-    dark-gray = "#3c3836";
-    white = "#ffffff";
-    black = "#020202";
-    red = "#f0318f";
-    green = "#41d95a";
-    yellow = "#ffff4d";
-    orange = "#e49342";
-    blue = "#4d97ff";
-    magenta = "#a64dff";
-    cyan = "#d9f86e";
-  };
-
+  rawPalette = import ./palette.nix;
 in
-builtins.mapAttrs (
-  name: value:
-  let
-    rgb = hexToRgb value;
-  in
-  {
-    hex = value;
-    inherit rgb;
-    rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
-    rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
-  }
-) rawPalette
+{
+  baseColors = builtins.mapAttrs (
+    name: value:
+    let
+      rgb = hexToRgb value;
+    in
+    {
+      hex = value;
+      inherit rgb;
+      rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
+      rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
+    }
+  ) rawPalette.rawPalette;
+
+  palette = builtins.mapAttrs (
+    name: value:
+    let
+      rgb = hexToRgb value;
+    in
+    {
+      hex = value;
+      inherit rgb;
+      rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
+      rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
+    }
+  ) rawPalette.palette;
+}
