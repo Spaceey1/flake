@@ -37,7 +37,7 @@ in
       inherit iconTheme;
       inherit cursorTheme;
       inherit colorScheme;
-      inherit theme;
+      # inherit theme; # assholes break themes
     };
   };
 }
