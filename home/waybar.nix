@@ -12,6 +12,7 @@ let
     		"clock"
     	]
   '';
+  colors = import ./colors.nix;
 in
 {
   xdg.configFile."waybar/config-niri.jsonc".text = ''
@@ -52,31 +53,31 @@ in
     	'';
   xdg.configFile."waybar/style.css".text = ''
     		#waybar {
-    			background-color: #131313;
-    			color: white;
+    			background-color: ${colors.black.hex};
+    			color: ${colors.white.hex};
     			font-family: "Commit Mono Nerd Font"
     		}
     		#workspaces button {
     			padding: 0 5px;
-    			color: #9342e4;
+    			color: ${colors.magenta.hex};
     			background: transparent;
     			border-bottom: 2px solid transparent;
     		}
     		/* Active tag (viewed) */
     		#workspaces button.active {
-    			color: #131313;
-    			background-color: #9342e4;
+    			color: ${colors.black.hex};
+    			background-color: ${colors.magenta.hex};
     			border-radius: 4px;
     		}
     		
     		/* Tag with windows but not focused */
     		#workspaces button.occupied {
-    			color: #cdc885;
+    			color: ${colors.magenta.hex};
     		}
     		/* Tag requesting attention */
     		#workspaces button.urgent {
-    			background-color: #ef5e5e;
-    			color: #282828;
+    			background-color: ${colors.red.hex};
+    			color: ${colors.black.hex};
     		}
     		#clock {
     			padding: 0px 10px;

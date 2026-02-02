@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  colors = import ./colors.nix;
+  in
 {
   config = {
     programs.helix = {
@@ -35,101 +38,87 @@
       };
       themes = {
         thweme =
-          let
-            transparent = "none";
-            gray = "#665c54";
-            dark-gray = "#3c3836";
-            white = "#ffffff";
-            black = "#020202";
-            red = "#f0318f";
-            green = "#41d95a";
-            yellow = "#ffff4d";
-            orange = "#e49342";
-            blue = "#4d97ff";
-            magenta = "#a64dff";
-            cyan = "#d9f86e";
-          in
           {
             "ui.menu" = {
-              bg = dark-gray;
-              fg = white;
+              bg = colors.dark-gray.hex;
+              fg = colors.white.hex;
             };
             # lsp suggestions
             "ui.menu.selected" = {
-              bg = green;
-              fg = black;
+              bg = colors.green.hex;
+              fg = colors.black.hex;
             };
             "ui.linenr" = {
-              fg = transparent;
-              bg = transparent;
+              fg = "none";
+              bg = "none";
             };
             "ui.popup" = {
-              bg = black;
+              bg = colors.black.hex;
             };
             "ui.linenr.selected" = {
-              fg = white;
-              bg = transparent;
+              fg = colors.white.hex;
+              bg = "none";
               modifiers = [ "bold" ];
             };
             "ui.selection" = {
-              bg = dark-gray;
+              bg = colors.dark-gray.hex;
             };
             "ui.selection.primary" = {
-              bg = gray;
+              bg = colors.gray.hex;
             };
             "comment" = {
-              fg = gray;
+              fg = colors.gray.hex;
             };
             "ui.statusline" = {
-              fg = white;
-              bg = dark-gray;
+              fg = colors.white.hex;
+              bg = colors.dark-gray.hex;
             };
             "ui.statusline.inactive" = {
-              fg = white;
-              bg = dark-gray;
+              fg = colors.white.hex;
+              bg = colors.dark-gray.hex;
             };
             "ui.help" = {
-              fg = white;
-              bg = dark-gray;
+              fg = colors.white.hex;
+              bg = colors.dark-gray.hex;
             };
             "ui.cursor" = {
               modifiers = [ "reversed" ];
             };
-            "variable" = white;
-            "variable.builtin" = magenta;
-            "constant.numeric" = green;
-            "constant" = green;
-            "attributes" = yellow;
-            "type" = green;
+            "variable" = colors.white.hex;
+            "variable.builtin" = colors.magenta.hex;
+            "constant.numeric" = colors.green.hex;
+            "constant" = colors.green.hex;
+            "attributes" = colors.yellow.hex;
+            "type" = colors.green.hex;
             "ui.cursor.match" = {
-              fg = blue;
+              fg = colors.blue.hex;
               modifiers = [ "underlined" ];
             };
-            "string" = red;
-            "variable.other.member" = cyan;
-            "constant.character.escape" = orange;
-            "function" = yellow;
-            "variable.function" = yellow;
-            "constructor" = yellow;
-            "special" = blue;
-            "keyword" = magenta;
-            "label" = magenta;
-            "namespace" = white;
-            "diff.plus" = green;
-            "diff.delta" = yellow;
-            "diff.minus" = red;
+            "string" = colors.red.hex;
+            "variable.other.member" = colors.cyan.hex;
+            "constant.character.escape" = colors.orange.hex;
+            "function" = colors.yellow.hex;
+            "variable.function" = colors.yellow.hex;
+            "constructor" = colors.yellow.hex;
+            "special" = colors.blue.hex;
+            "keyword" = colors.magenta.hex;
+            "label" = colors.magenta.hex;
+            "namespace" = colors.white.hex;
+            "diff.plus" = colors.green.hex;
+            "diff.delta" = colors.yellow.hex;
+            "diff.minus" = colors.red.hex;
             "diagnostic" = {
               modifiers = [ "underlined" ];
             };
             "ui.gutter" = {
-              bg = transparent;
+              bg = "none";
             };
-            "info" = blue;
-            "hint" = dark-gray;
-            "debug" = dark-gray;
-            "warning" = yellow;
-            "error" = red;
-            "ui.virtual.inlay-hint" = gray;
+            "info" = colors.blue.hex;
+            "hint" = colors.dark-gray.hex;
+            "debug" = colors.dark-gray.hex;
+            "warning" = colors.yellow.hex;
+            "error" = colors.red.hex;
+            "ui.virtual.inlay-hint" = colors.gray.hex;
           };
       };
     };

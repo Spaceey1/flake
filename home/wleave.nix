@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  colors = import ./colors.nix;
+in
 {
   xdg.configFile."wleave/layout.json".text = ''
     	{
@@ -37,23 +40,23 @@
     				"keybind": "r",
     				"icon": "${pkgs.wleave}/share/wleave/icons/reboot.svg"
     			}
-    		]
+    		],
+    		"css": "${config.home.homeDirectory}/.config/wleave/style.css"
     	}
     	'';
   xdg.configFile."wleave/style.css".text = ''
-    		:root{
-    			--view-bg-color: #131313;
-    			--view-fg-color: #131313;
-    		
-    		}
+        *{
+          all:unset;
+    background-color: rgba(${colors.black.rgbRaw}, 0.6);
+        }
     		window {
-    			background-color: rgba(13, 13, 13, 0.6);
+    			background-color: rgba(${colors.black.rgbRaw}, 0.6);
     		}
     		
     		button {
-    			color: #bbbbbb;
-    			background-color: var(--view-bg-color);
-    			border: 1px #b37bec solid;
+    			color: ${colors.white.hex};
+    			background-color: ${colors.black.hex};
+    			border: 1px ${colors.magenta.hex} solid;
     			border-radius: 8px;
     			padding: 10px;
     		}
@@ -63,17 +66,11 @@
     		}
     		
     		button label.keybind {
-    			color: #b37bec;
+    			color: ${colors.magenta.hex};
     			font-size: 20px;
     			font-family: monospace;
     		}
-    		
     		button:active {
-    		    color: var(--accent-fg-color);
-    		    background-color: var(--accent-bg-color);
     		}
     	'';
-  dconf.settings = {
-    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
 }
