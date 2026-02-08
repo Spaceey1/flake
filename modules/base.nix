@@ -43,7 +43,7 @@
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
         systemd-boot.configurationLimit = 3;
-        timeout = 0;
+        timeout = lib.mkOverride 60 0;
       };
       kernelParams = [
         "video=1920x1080"
