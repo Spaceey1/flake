@@ -1,6 +1,7 @@
 {
   osConfig,
   pkgs,
+  config,
   ...
 }:
 
@@ -49,7 +50,7 @@
         ${pkgs.fastfetch}/bin/fastfetch
       '';
       nixre = ''
-        if sudo nixos-rebuild switch --flake /home/space/nix#${osConfig.networking.hostName}
+        if sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix#${osConfig.networking.hostName}
           ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Success"
         else
            ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Fail"       
