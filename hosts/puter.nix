@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hardware/puputer.nix
+    ./hardware/puter.nix
     ../modules/base.nix
     ../modules/desktop.nix
     ../modules/niri.nix
