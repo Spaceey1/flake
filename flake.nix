@@ -35,6 +35,7 @@
             };
             modules = [
               inputs.home-manager.nixosModules.home-manager
+              inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
               (hostsDir + "/${filename}")
               ./modules/base.nix
             ];
