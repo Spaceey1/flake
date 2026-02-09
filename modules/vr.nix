@@ -18,51 +18,10 @@
         ];
       });
     })
-    (final: prev: {
-      wlx-overlay-s = pkgs.rustPlatform.buildRustPackage (old: {
-        src = final.fetchFromGitHub {
-          owner = "wlx-team";
-          repo = "wayvr";
-          rev = "main";
-          sha256 = "sha256-MSfpZPZdezS4rtt1W1YgJusMuPxRLrkBCRvJfn8lnfE=";
-        };
-        pname = "wlx-overlay-s";
-        version = "latest";
-        cargoHash = "sha256-zqB2ybdpQEGdlkNin6mlUfaVRkpOtFl2CVCLAdKDMoQ=";
-        SHADERC_LIB_DIR = "${pkgs.shaderc.lib}/lib";
-        nativeBuildInputs = [
-          pkgs.pkg-config
-          pkgs.rustPlatform.bindgenHook
-          pkgs.cmake
-          pkgs.shaderc
-          pkgs.makeWrapper
-        ];
-        buildInputs = [
-          pkgs.openssl
-          pkgs.alsa-lib
-          pkgs.pipewire
-          pkgs.libclang
-          pkgs.cmake
-          pkgs.shaderc
-          pkgs.wayland
-          pkgs.libxkbcommon
-          pkgs.vulkan-loader
-          pkgs.libGL
-          pkgs.dbus
-          pkgs.openxr-loader
-          pkgs.openvr
-          pkgs.xorg.libX11
-          pkgs.xorg.libXext
-          pkgs.xorg.libXrandr
-          pkgs.xorg.libxcb
-        ];
-      });
-    })
-
   ];
   environment.systemPackages = with pkgs; [
     xrizer
-    wlx-overlay-s
+wayvr
   ];
   my.python.packages = lib.mkAfter (
     with pkgs.python3Packages;
@@ -94,11 +53,11 @@
         KillSignal = "SIGKILL";
       };
     };
-    wlx-overlay-s = {
-      description = "VR wlx-overlay-s";
-      path = [ pkgs.wlx-overlay-s ];
+    wayvr = {
+      description = "VR wayvr";
+      path = [ pkgs.wayvr ];
       serviceConfig = {
-        ExecStart = "${pkgs.wlx-overlay-s}/bin/wayvr";
+        ExecStart = "${pkgs.wayvr}/bin/wayvr";
         Restart = "on-abnormal";
       };
       bindsTo = [ "monado.service" ];
