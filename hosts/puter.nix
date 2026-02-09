@@ -14,6 +14,7 @@
     ../modules/nvidia.nix
     ../modules/docker.nix
     ../modules/vms.nix
+    ../modules/home-manager.nix
   ];
 
   networking.hostName = "puter";
@@ -25,7 +26,6 @@
       extraGroups = [ ];
     };
   };
-  home-manager.users."${config.host.mainUser}" = import ../home/home.nix;
   host.mainMonitor = "HDMI-A-2";
   host.startupSession = "${pkgs.niri}/bin/niri-session";
   fileSystems."/home" = {
