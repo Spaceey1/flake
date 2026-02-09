@@ -15,6 +15,7 @@ let
     binds  {
     	Mod+Shift+Slash { show-hotkey-overlay; }
 
+    	Ctrl+Tab { spawn "${pkgs.wayvr}/bin/wayvrctl" "show-hide"; }
     	Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "${pkgs.kitty}/bin/kitty"; }
     	Mod+I { spawn "${pkgs.nemo-with-extensions}/bin/nemo"; }
     	Mod+E { spawn "${pkgs.librewolf}/bin/librewolf"; }
