@@ -1,14 +1,14 @@
 {
   config,
   lib,
-  nixpkgs-xr,
+  inputs,
   pkgs,
   ...
 }:
 
 {
   nixpkgs.overlays = [
-    nixpkgs-xr.overlays.default
+    inputs.nixpkgs-xr.overlays.default
     (final: prev: {
       # Fix for "File already exists in database" crash at startup
       monado = prev.monado.overrideAttrs (old: {
