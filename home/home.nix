@@ -64,7 +64,6 @@
       mpv
       telegram-desktop
       feh
-      blender
       qpwgraph
       unzip
       unrar
