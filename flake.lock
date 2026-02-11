@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770771190,
-        "narHash": "sha256-eiz6o8Ff34YgRrUyJp50WuLm2xxdAzL6Djje81Y6Y18=",
+        "lastModified": 1770851839,
+        "narHash": "sha256-vZEz2Eg5qtOF5iae/6CcnQcD95P96vyveLEiY61LtQo=",
         "owner": "Spaceey1",
         "repo": "EDHM-Nix",
-        "rev": "192b6d119d1b10d4afe10a1d7a50497552afb8a1",
+        "rev": "c57dfac02ac105353a9111b0d8fc98bf80583e54",
         "type": "github"
       },
       "original": {
