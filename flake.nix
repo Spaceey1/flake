@@ -11,6 +11,10 @@
       inputs.nixpkgs.follows = "pkgs";
     };
     import-tree.url = "github:vic/import-tree";
+    edhm = {
+      url = "github:Spaceey1/EDHM-Nix";
+      inputs.nixpkgs.follows = "pkgs";
+    };
   };
 
   outputs =
@@ -36,6 +40,7 @@
             modules = [
               inputs.home-manager.nixosModules.home-manager
               inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+              inputs.edhm.nixosModules.default
               (hostsDir + "/${filename}")
               ./modules/base.nix
             ];

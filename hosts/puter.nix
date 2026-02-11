@@ -11,6 +11,7 @@
     ../modules/nvidia.nix
     ../modules/home-manager.nix
     ../modules/blender.nix
+    ../modules/edhm.nix
   ];
 
   networking.hostName = "puter";
