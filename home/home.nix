@@ -58,7 +58,6 @@
       jq
       dunst
       libnotify
-      obs-studio
       ffmpeg
       yt-dlp
       mpv

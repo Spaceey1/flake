@@ -9,6 +9,7 @@
     ../modules/bluetooth.nix
     ../modules/home-manager.nix
     ../modules/steam.nix
+    ../modules/obs.nix
   ];
   networking.hostName = "lap";
   host.mainMonitor = "eDP-1";

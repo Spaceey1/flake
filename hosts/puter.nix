@@ -12,6 +12,7 @@
     ../modules/home-manager.nix
     ../modules/blender.nix
     ../modules/edhm.nix
+    ../modules/obs.nix
   ];
 
   networking.hostName = "puter";
