@@ -1,11 +1,8 @@
-{ ... }:
+{ config, lib, ... }:
 
 {
-  config = {
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-    };
-    services.blueman.enable = true;
+  config = lib.mkIf config.hardware.bluetooth.enable {
+    hardware.bluetooth.powerOnBoot = false;
+    services.blueman.enable = config.host.isDesktopSystem;
   };
 }

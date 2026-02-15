@@ -7,11 +7,6 @@
 
 {
   options.host = {
-    mainMonitor = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      default = null;
-      description = "The primary monitor identifier for this host.";
-    };
     hasBattery = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -20,6 +15,10 @@
     mainUser = lib.mkOption {
       type = lib.types.str;
       description = "The primary user account";
+    };
+    gpuType = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      description = "Type of gpu. Nvidia, AMD, etc.";
     };
   };
   config = {

@@ -1,4 +1,10 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  osConfig,
+  config,
+  lib,
+  ...
+}:
 
 let
   desktopEntries = {
@@ -29,7 +35,7 @@ let
       '';
 in
 {
-  config = {
+  config = lib.mkIf osConfig.host.isDesktopSystem {
     xdg.desktopEntries = builtins.mapAttrs (_: entry: {
       name = entry.name;
       exec = entry.exec;

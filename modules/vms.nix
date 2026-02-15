@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  config = {
-    programs.virt-manager.enable = true;
-    virtualisation.libvirtd.enable = true;
+  config = lib.mkIf config.virtualisation.libvirtd.enable {
+    programs.virt-manager.enable = config.host.isDesktopSystem;
     environment.systemPackages = [
       pkgs.qemu
       pkgs.virtiofsd

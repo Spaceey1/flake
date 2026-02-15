@@ -41,8 +41,10 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
               inputs.edhm.nixosModules.default
+              inputs.mango.nixosModules.mango
               (hostsDir + "/${filename}")
-              ./modules/base.nix
+              (hostsDir + "/hardware/${filename}")
+              (inputs.import-tree ./modules)
             ];
           }
         );

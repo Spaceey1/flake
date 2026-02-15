@@ -1,4 +1,0 @@
-{...}:
-{
-  programs.edhm.enable = true;
-}

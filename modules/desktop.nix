@@ -5,19 +5,24 @@
   ...
 }:
 {
-  imports = [
-    ./python.nix
-    ./riseup.nix
-  ];
   options = {
     host.startupSession = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
       description = "Session to start on bootup";
     };
+    host.isDesktopSystem = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+    host.mainMonitor = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "The primary monitor identifier for this host.";
+    };
   };
-  config = {
-    services.greetd = lib.mkIf (config.host.startupSession != null ){
+  config = lib.mkIf config.host.isDesktopSystem {
+    services.greetd = lib.mkIf (config.host.startupSession != null) {
       enable = true;
       settings = rec {
         initial_session = {

@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
-  programs.mango.enable = true;
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = lib.mkIf config.programs.mango.enable (with pkgs; [
     grim
     slurp
-  ];
+  ]);
 }
