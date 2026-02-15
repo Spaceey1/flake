@@ -7,6 +7,7 @@
 {
   imports = [
     ./python.nix
+    ./riseup.nix
   ];
   options = {
     host.startupSession = lib.mkOption {
