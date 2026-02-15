@@ -2,9 +2,16 @@
   lib,
   pkgs,
   config,
+  osConfig,
   ...
 }:
 
+  let
+extraBinds = [
+    	(lib.optionals osConfig.vr.monado.enable ''Ctrl+Tab { spawn "${pkgs.wayvr}/bin/wayvrctl" "show-hide"; }'')
+];
+   in
+    
 let
   bindsKdl = ''
     gestures {
@@ -15,7 +22,6 @@ let
     binds  {
     	Mod+Shift+Slash { show-hotkey-overlay; }
 
-    	Ctrl+Tab { spawn "${pkgs.wayvr}/bin/wayvrctl" "show-hide"; }
     	Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "${pkgs.kitty}/bin/kitty"; }
     	Mod+I { spawn "${pkgs.nemo-with-extensions}/bin/nemo"; }
     	Mod+E { spawn "${pkgs.librewolf}/bin/librewolf"; }
@@ -165,10 +171,9 @@ let
     	Mod+Shift+E { spawn "${pkgs.wleave}/bin/wleave"; }
     	Alt+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     	Menu { spawn "${pkgs.equibop}/bin/equibop" "--toggle-deafen"; }
-    	Ctrl+Menu { spawn "${pkgs.equibop}/bin/equibop" "--toggle-mic"; }
-
-    }
-  '';
+    	Ctrl+Menu { spawn "${pkgs.equibop}/bin/equibop" "--toggle-mic"; }''\n''+
+      (builtins.concatStringsSep "\n" extraBinds)+
+      "\n}";
 in
 {
   xdg.configFile."niri/config.kdl".text = lib.mkAfter bindsKdl;
