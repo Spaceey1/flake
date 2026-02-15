@@ -6,6 +6,7 @@
   programs = {
     obs.enable = true;
     steam.enable = true;
+    edhm.enable = true;
   };
 
   vr = {
