@@ -29,9 +29,11 @@
     users.users."${config.host.mainUser}" = {
       isNormalUser = true;
       shell = pkgs.fish;
+      initialPassword = "123";
       extraGroups = [
         "wheel"
         "docker"
+        "dialout"
       ];
     };
     nixpkgs.config.allowUnfree = true;

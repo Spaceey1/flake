@@ -5,16 +5,20 @@
   ...
 }:
 {
-  options = {
-    host.homeManager.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
   config = {
-    home-manager.users."${config.host.mainUser}" = lib.mkIf config.host.homeManager.enable (
-      import ../home/home.nix
-    );
-    home-manager.useGlobalPkgs = true;
+    home-manager = {
+      useGlobalPkgs = true;
+      sharedModules =
+        builtins.map (name: ../home + "/${name}") (
+          builtins.attrNames (
+            lib.filterAttrs (name: type: type == "regular" && lib.hasSuffix ".nix" name) (
+              builtins.readDir ../home
+            )
+          )
+        )
+        ++ [({...}: {
+          home.stateVersion = "26.05";
+        })];
+    };
   };
 }

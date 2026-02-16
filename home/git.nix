@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  programs.git = {
-    enable = true;
+  programs.git = lib.mkIf config.programs.git.enable {
     settings = {
       user = {
         name = "Spaceey1";
@@ -12,5 +11,4 @@
       credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
     };
   };
-
 }

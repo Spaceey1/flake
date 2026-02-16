@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  programs.rofi = {
-    enable = true;
+  programs.rofi = lib.mkIf config.programs.rofi.enable {
     plugins = [
       pkgs.rofi-emoji
     ];

@@ -14,8 +14,7 @@
     };
   };
 
-  config = {
-    programs.hyprlock.enable = true;
+  config = lib.mkIf config.programs.hyprlock.enable {
     programs.hyprlock.settings = {
       general = {
         hide_cursor = true;

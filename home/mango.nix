@@ -20,7 +20,11 @@ in
       type = lib.types.path;
     };
   };
-  config = {
+  config = lib.mkIf osConfig.programs.mango.enable {
+    home.packages = with pkgs; [
+      grim
+      slurp
+    ];
     xdg.configFile."mango/config.conf".text = ''
       			exec-once=${pkgs.swaybg}/bin/swaybg -i ${config.programs.mango.wallpaper}
       			exec-once=${pkgs.waybar}/bin/waybar -c ${config.home.homeDirectory}/.config/waybar/config-mango.jsonc
@@ -28,18 +32,15 @@ in
       			exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
       			exec-once=XDG_CURRENT_DESKTOP=sway ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal -r & ${pkgs.xdg-desktop-portal-wlr}/libexec/xdg-desktop-portal-wlr
       			${
-           if (osConfig.networking.hostName == "puter") then
-             "
-				bind=Alt, H,focusmon,HDMI-A-1
-				bind=Alt, L,focusmon,HDMI-A-2
-				bind=Alt+Shift, H,tagmon,HDMI-A-1,false
-				bind=Alt+Shift, L,tagmon,HDMI-A-2,false
-				"
-           else
-             ""
-         }
+            lib.mkIf (osConfig.networking.hostName == "puter")
+              "
+				      bind=Alt, H,focusmon,HDMI-A-1
+				      bind=Alt, L,focusmon,HDMI-A-2
+				      bind=Alt+Shift, H,tagmon,HDMI-A-1,false
+				      bind=Alt+Shift, L,tagmon,HDMI-A-2,false
+				      "
+            }
       			${files}
       		'';
   };
-  imports = [ ./waybar.nix ];
 }

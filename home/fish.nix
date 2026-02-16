@@ -2,12 +2,12 @@
   osConfig,
   pkgs,
   config,
+  lib,
   ...
 }:
 
 {
-  programs.fish = {
-    enable = true;
+  programs.fish = lib.mkIf config.programs.fish.enable {
 
     shellAliases = {
       cd = "z";
