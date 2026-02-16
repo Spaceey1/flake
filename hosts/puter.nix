@@ -40,7 +40,7 @@
         };
         hyprlock = {
           enable = true;
-          lockImage = ../wallpapers/tri.png;
+          lockImage = ../home/wallpapers/tri.png;
           mainMonitor = config.host.mainMonitor;
         };
         helix.enable = true;
