@@ -10,6 +10,8 @@
     niri.enable = true;
   };
 
+  virtualisation.libvirtd.enable = true;
+
   vr = {
     monado.enable = true;
     lighthouse.enable = true;
