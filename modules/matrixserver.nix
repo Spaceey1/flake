@@ -18,12 +18,19 @@ let
     add_header Access-Control-Allow-Origin *;
     return 200 '${builtins.toJSON data}';
   '';
-  clientConfig."m.homeserver".base_url = matrixSub;
+  clientConfig = {
+    "m.homeserver".base_url = matrixSub;
+    "org.matrix.msc4143.rtc_foci" = [
+      {
+        "type" = "livekit";
+        "livekit_service_url" = "https://${matrixSub}/livekit";
+      }
+    ];
+  };
   serverConfig."m.server" = "${matrixSub}:443";
 in
 {
   config = lib.mkIf config.services.matrix-synapse.enable {
-    # 1. Database
     services.postgresql = {
       enable = true;
       initialScript = pkgs.writeText "synapse-init.sql" ''
@@ -35,27 +42,22 @@ in
       '';
     };
 
-    # 2. ACME Global Settings
     security.acme = {
       acceptTerms = true;
       defaults.email = "admin@${rootDomain}";
     };
 
-    # 3. Nginx
     services.nginx = {
       enable = true;
       virtualHosts = {
-        # The Identity Domain (example.com)
         "${rootDomain}" = {
           enableACME = true;
           forceSSL = true;
-          # Only discovery files live here
           locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
           locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
           locations."/".extraConfig = "return 404;";
         };
 
-        # The Service Domain (matrix.example.com)
         "${matrixSub}" = {
           enableACME = true;
           forceSSL = true;
@@ -63,7 +65,6 @@ in
           locations."/_synapse/client".proxyPass = "http://[::1]:8008";
         };
 
-        # The TURN Domain (turn.example.com)
         "${turnSub}" = {
           enableACME = true;
           forceSSL = true;
@@ -72,16 +73,22 @@ in
       };
     };
 
-    # 4. Matrix Synapse
     services.matrix-synapse = {
       extraConfigFiles = [ "/var/lib/secrets/synapse-secrets.yaml" ];
       settings = {
+        presence.enabled = true;
         server_name = rootDomain;
         public_baseurl = "https://${matrixSub}";
         turn_uris = [
           "turn:${turnSub}:3478?transport=udp"
           "turn:${turnSub}:3478?transport=tcp"
+          "turns:${turnSub}:5349?transport=udp"
+          "turns:${turnSub}:5349?transport=tcp"
         ];
+        experimental_features = {
+          "msc3266_enabled" = true;
+          "msc4140_enabled" = true;
+        };
 
         listeners = [
           {
@@ -105,8 +112,6 @@ in
           }
         ];
 
-        #a
-
         database = {
           name = "psycopg2";
           allow_unsafe_locale = true;
@@ -119,12 +124,23 @@ in
 
         enable_registration = false;
         url_preview_enabled = true;
+        url_preview_ip_range_blacklist = [
+          "127.0.0.0/8"
+          "10.0.0.0/8"
+          "172.16.0.0/12"
+          "192.168.0.0/16"
+          "100.64.0.0/10"
+          "::1/128"
+          "fe80::/10"
+          "fc00::/7"
+        ];
+        enable_search = true;
         enable_metrics = false;
+        enable_authenticated_get_devicelist_delayed_updates = true;
 
       };
     };
 
-    # 5. Coturn
     services.coturn = {
       enable = true;
       realm = turnSub;
@@ -134,7 +150,6 @@ in
       pkey = "/var/lib/acme/${turnSub}/key.pem";
     };
 
-    # 6. Permissions & Firewall
     users.users.turnserver.extraGroups = [ "acme" ];
     networking.firewall = {
       allowedTCPPorts = [
@@ -156,7 +171,6 @@ in
     };
     systemd.services.matrix-setup-everything = {
       description = "Generate secrets and ensure database exists";
-      # Ensure this runs after Postgres but before Synapse
       after = [ "postgresql.service" ];
       before = [
         "matrix-synapse.service"
@@ -165,7 +179,6 @@ in
       wantedBy = [ "multi-user.target" ];
       serviceConfig.Type = "oneshot";
       script = ''
-                          # --- Part A: Secret Generation ---
                           mkdir -p /var/lib/secrets
                           if [ ! -f /var/lib/secrets/turn-secret ]; then
                             ${pkgs.openssl}/bin/openssl rand -hex 32 > /var/lib/secrets/turn-secret
