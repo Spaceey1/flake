@@ -31,16 +31,14 @@ in
       			exec-once=${pkgs.dunst}/bin/dunst
       			exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
       			exec-once=XDG_CURRENT_DESKTOP=sway ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal -r & ${pkgs.xdg-desktop-portal-wlr}/libexec/xdg-desktop-portal-wlr
-      			${
-            lib.mkIf (osConfig.networking.hostName == "puter")
-              "
-				      bind=Alt, H,focusmon,HDMI-A-1
-				      bind=Alt, L,focusmon,HDMI-A-2
-				      bind=Alt+Shift, H,tagmon,HDMI-A-1,false
-				      bind=Alt+Shift, L,tagmon,HDMI-A-2,false
-				      "
-            }
-      			${files}
-      		'';
+      			bind=Super, P, spawn, ${./mango/rofi.sh}${
+            if (osConfig.networking.hostName == "puter") then
+"
+bind=Alt, H,focusmon,HDMI-A-1
+bind=Alt, L,focusmon,HDMI-A-2
+bind=Alt+Shift, H,tagmon,HDMI-A-1,false
+bind=Alt+Shift, L,tagmon,HDMI-A-2,false
+" else ""}
+${files}'';
   };
 }

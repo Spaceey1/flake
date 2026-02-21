@@ -15,12 +15,25 @@
       url = "github:Spaceey1/EDHM-Nix";
       inputs.nixpkgs.follows = "pkgs";
     };
+    overte = {
+      url = "github:overte-org/overte";
+      inputs.nixpkgs.follows = "pkgs";
+    };
   };
 
   outputs =
     inputs:
     let
-      lib = inputs.pkgs.lib;
+      system = "x86_64-linux";
+    in
+    let
+      pkgs = import inputs.pkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+      lib = pkgs.lib;
       hostsDir = ./hosts;
       dirContents = builtins.readDir hostsDir;
       isNixFile = name: type: type == "regular" && lib.hasSuffix ".nix" name;
@@ -31,13 +44,16 @@
           hostname = lib.removeSuffix ".nix" filename;
         in
         lib.nameValuePair hostname (
-          lib.nixosSystem {
-            system = "x86_64-linux";
+          inputs.pkgs.lib.nixosSystem {
+            inherit system;
             specialArgs = {
               inherit inputs;
               inherit hostname;
+              inherit system;
+              self = inputs.self;
             };
             modules = [
+              { nixpkgs.pkgs = pkgs; }
               inputs.home-manager.nixosModules.home-manager
               inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
               inputs.edhm.nixosModules.default

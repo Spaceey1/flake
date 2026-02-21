@@ -17,8 +17,9 @@
       description = "The primary user account";
     };
     gpuType = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
+      type = lib.types.str;
       description = "Type of gpu. Nvidia, AMD, etc.";
+      default = "";
     };
   };
   config = {
@@ -36,7 +37,6 @@
         "dialout"
       ];
     };
-    nixpkgs.config.allowUnfree = true;
 
     boot = {
       consoleLogLevel = 3;
@@ -80,8 +80,6 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     networking.firewall.enable = true;
-    services.openssh.enable = true;
-    systemd.services.sshd.wantedBy = lib.mkForce [ ];
     environment.sessionVariables = {
       DOTNET_CLI_TELEMETRY_OPTOUT = "1";
     };

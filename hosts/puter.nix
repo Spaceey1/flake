@@ -3,12 +3,7 @@
 {
   networking.hostName = "puter";
 
-  programs = {
-    obs.enable = true;
-    steam.enable = true;
-    edhm.enable = true;
-    niri.enable = true;
-  };
+  programs.desktopGroup.enable = true;
 
   virtualisation.libvirtd.enable = true;
 
@@ -16,6 +11,8 @@
     monado.enable = true;
     lighthouse.enable = true;
   };
+
+  services.openssh.enable = true;
 
   hardware.bluetooth.enable = true;
 
@@ -40,22 +37,7 @@
             close = ../home/niri/shaders/close.frag;
           };
         };
-        hyprlock = {
-          enable = true;
-          lockImage = ../home/wallpapers/tri.png;
-          mainMonitor = config.host.mainMonitor;
-        };
-        helix.enable = true;
-        kitty = {
-          nemoOpen = true;
-          enable = true;
-        };
-        rofi.enable = true;
-        fish.enable = true;
-        fastfetch.enable = true;
-        waybar.enable = true;
-        dunst.enable = true;
-        git.enable = true;
+        hyprlock.lockImage = ../home/wallpapers/tri.png;
       };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";
