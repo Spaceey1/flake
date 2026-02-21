@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options = {
     programs.desktopGroup.enable = lib.mkEnableOption "desktopAppGroup";
@@ -29,6 +34,9 @@
           dunst.enable = true;
           git.enable = true;
         };
+        home.packages = [
+          pkgs.element-desktop
+        ];
       };
     };
   };
