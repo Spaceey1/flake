@@ -46,7 +46,7 @@
         						commandline -C 0
         			'';
 
-      fish_greeting = ''
+      fish_greeting = lib.mkIf config.programs.fastfetch.enable ''
         ${pkgs.fastfetch}/bin/fastfetch
       '';
       nixre = ''

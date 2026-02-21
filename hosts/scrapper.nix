@@ -23,6 +23,12 @@
 
   home-manager = {
     users."${config.host.mainUser}" = {
+      dconf.enable = false;
+      programs = {
+        fish.enable = true;
+        helix.enable = true;
+        git.enable = true;
+      };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";
     };

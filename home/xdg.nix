@@ -43,6 +43,7 @@ in
       noDisplay = true;
     }) desktopEntries;
     dconf = {
+      enable = true;
       settings = {
         "org/cinnamon/desktop/applications/terminal" = {
           exec = "${pkgs.kitty}/bin/kitty";
