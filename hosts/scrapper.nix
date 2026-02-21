@@ -14,7 +14,7 @@
   services.openssh = {
     enable = true;
     autostart = true;
-    PasswordAuthentication = false;
+    passwordAuthentication = false;
   };
 
   host = {
