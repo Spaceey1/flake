@@ -14,7 +14,7 @@
   services.openssh = {
     enable = true;
     autostart = true;
-    passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
   };
 
   host = {
