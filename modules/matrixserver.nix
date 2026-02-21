@@ -74,7 +74,6 @@ in
 
     # 4. Matrix Synapse
     services.matrix-synapse = {
-      enable = true;
       extraConfigFiles = [ "/var/lib/secrets/synapse-secrets.yaml" ];
       settings = {
         server_name = rootDomain;
