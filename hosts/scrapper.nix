@@ -9,11 +9,13 @@
   };
   hardware.bluetooth.enable = true;
 
-  services.logind.extraConfig = ''
-    HandleLidSwitch=ignore
-    HandleLidSwitchExternalPower=ignore
-    HandleLidSwitchDocked=ignore
-  '';
+  services.logind.settings = {
+    Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+    };
+  };
 
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
