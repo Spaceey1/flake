@@ -3,6 +3,7 @@
   config,
   system,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -14,7 +15,7 @@
   };
   config = lib.mkIf config.programs.overte.enable {
     environment.systemPackages = [
-      inputs.overte.packages."${system}".overte-full
+      pkgs.overte-bin
     ];
   };
 }

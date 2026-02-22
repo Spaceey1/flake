@@ -15,10 +15,6 @@
       url = "github:Spaceey1/EDHM-Nix";
       inputs.nixpkgs.follows = "pkgs";
     };
-    overte = {
-      url = "github:overte-org/overte";
-      inputs.nixpkgs.follows = "pkgs";
-    };
   };
 
   outputs =

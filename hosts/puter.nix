@@ -4,6 +4,7 @@
   networking.hostName = "puter";
 
   programs.desktopGroup.enable = true;
+  programs.overte.enable = true;
 
   virtualisation.libvirtd.enable = true;
 
