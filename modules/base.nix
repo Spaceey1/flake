@@ -51,7 +51,7 @@
         "quiet"
       ];
       plymouth = {
-        enable = true;
+        enable = false;
         theme = "breeze";
         # themePackages = with pkgs; [
         #   kdePackages.breeze-plymouth
