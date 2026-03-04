@@ -9,7 +9,6 @@
 
   host = {
     gpuType = "intel";
-    homeManager.enable = true;
     swapSize = 4 * 1024;
     isDesktopSystem = true;
     mainUser = "space";
