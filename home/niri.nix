@@ -12,7 +12,7 @@ let
     map (name: builtins.readFile (./niri/configs/${name})) (builtins.attrNames niriFiles)
   );
   colors = import ../colors.nix;
-  extraBinds = [
+  extraBinds = lib.flatten [
     (lib.optionals osConfig.vr.monado.enable ''Ctrl+Tab { spawn "${pkgs.wayvr}/bin/wayvrctl" "show-hide"; }'')
   ];
 in
@@ -247,17 +247,22 @@ in
     + (builtins.concatStringsSep "\n" extraBinds)
     + "\n}\n"
     + niriConfig
-    + (if config.programs.niri.animations.enable then ''
-      animations {
-        window-close {
-          duration-ms 250
-          custom-shader "${builtins.readFile config.programs.niri.animations.close}"
-        }
-        window-open {
-          duration-ms 250
-          custom-shader "${builtins.readFile config.programs.niri.animations.open}"
-        }
-      }
-    ''else "");
+    + (
+      if config.programs.niri.animations.enable then
+        ''
+          animations {
+            window-close {
+              duration-ms 250
+              custom-shader "${builtins.readFile config.programs.niri.animations.close}"
+            }
+            window-open {
+              duration-ms 250
+              custom-shader "${builtins.readFile config.programs.niri.animations.open}"
+            }
+          }
+        ''
+      else
+        ""
+    );
   };
 }
