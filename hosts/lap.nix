@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 {
-  networking.hostName = "lap";
-
   programs.desktopGroup.enable = true;
 
   hardware.bluetooth.enable = true;

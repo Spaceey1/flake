@@ -4,7 +4,6 @@
   config, ... }:
 
 {
-  networking.hostName = "scrapper";
   networking.domain = "scrapped.space";
   services.matrix-synapse.enable = true;
   security.acme = {
@@ -55,7 +54,7 @@
     enable = true;
     package = pkgs.minecraftServers.vanilla-1_20_1;
     eula = true;
-    openFirewall = true; # Opens the port the server is running on (by default 25565 but in this case 43000)
+    openFirewall = true;
     declarative = true;
     whitelist = {
       # This is a mapping of Minecraft usernames to to the players' UUIDs

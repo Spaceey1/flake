@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 {
-  networking.hostName = "puter";
-
   programs.desktopGroup.enable = true;
   programs.overte.enable = true;
   programs.unity.enable = true;
@@ -44,6 +42,7 @@
       };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";
+      home.packages = [ pkgs.blender ];
     };
   };
 }

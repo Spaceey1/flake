@@ -51,6 +51,7 @@
             };
             modules = [
               { nixpkgs.pkgs = pkgs; }
+              { networking.hostName = hostname; }
               inputs.home-manager.nixosModules.home-manager
               inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
               inputs.edhm.nixosModules.default
