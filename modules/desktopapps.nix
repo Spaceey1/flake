@@ -35,7 +35,44 @@
         };
         home.packages = [
           pkgs.element-desktop
-        ];
+          pkgs.teamspeak6-client
+          pkgs.wget
+          pkgs.librewolf
+          pkgs.kitty
+          pkgs.swaybg
+          pkgs.eww
+          pkgs.equibop
+          pkgs.wl-clipboard
+          pkgs.xwayland-satellite
+          pkgs.spotifywm
+          pkgs.playerctl
+          pkgs.fastfetch
+          pkgs.zoxide
+          pkgs.wleave
+          pkgs.pwvucontrol
+          pkgs.openrgb
+          pkgs.btop-cuda
+          pkgs.hyprlock
+          pkgs.nemo
+          pkgs.jq
+          pkgs.dunst
+          pkgs.libnotify
+          pkgs.ffmpeg
+          pkgs.yt-dlp
+          pkgs.mpv
+          pkgs.telegram-desktop
+          pkgs.feh
+          pkgs.qpwgraph
+          pkgs.unzip
+          pkgs.unrar
+          pkgs.openssh
+          pkgs.gparted
+          pkgs.qbittorrent
+          pkgs.qalculate-gtk
+          pkgs.baobab
+          pkgs.pinta
+        ]
+        ++ lib.optional config.host.hasBattery pkgs.powertop;
       };
     };
   };

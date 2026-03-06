@@ -75,6 +75,11 @@
 
     programs.fish.enable = true;
 
+    environment.systemPackages = [
+      pkgs.zoxide
+      pkgs.wget
+    ];
+
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
