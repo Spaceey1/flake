@@ -59,8 +59,8 @@ in
       defaultApplications = {
         "inode/directory" = [ desktopEntries.nemo.desktop ];
         "application/x-gnome-saved-search" = [ desktopEntries.nemo.desktop ];
-        "image/*" = [ desktopEntries.feh.desktop ];
-        "text/*" = [ desktopEntries.Helix.desktop ];
+        "image/png" = [ desktopEntries.feh.desktop ];
+        "text/txt" = [ desktopEntries.Helix.desktop ];
       };
     };
     home.packages = [

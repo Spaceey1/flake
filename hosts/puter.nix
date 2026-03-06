@@ -5,6 +5,8 @@
 
   programs.desktopGroup.enable = true;
   programs.overte.enable = true;
+  programs.unity.enable = true;
+  programs.niri.enable = true;
 
   virtualisation.libvirtd.enable = true;
 

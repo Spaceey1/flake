@@ -5,12 +5,7 @@ let
     	"format": "{capacity}% {icon}  ",
     	"format-icons": ["", "", "", "", ""]
     },
-    "layer": "top",
-    "modules-right": [
-    		${if (osConfig.host.hasBattery) then ''"battery",'' else ""}
-    		"tray",
-    		"clock"
-    	]
+    "layer": "top"
   '';
   colors = import ../colors.nix;
 in
@@ -28,6 +23,15 @@ in
       		"niri/window": {
       			"format": "{title}"
       		},
+          "custom#overview": {
+            "on-click": "niri msg action toggle-overview"
+          },
+          "modules-right": [
+    		      ${if (osConfig.host.hasBattery) then ''"battery",'' else ""}
+    		      "tray",
+    		      "clock",
+    		      "custom#overview"
+    	    ],
       		${sharedConfig}
       	}
       	'';
@@ -49,6 +53,12 @@ in
       		"dwl/window": {
       			"format": "{title}"
       		},
+
+          "modules-right": [
+          		${if (osConfig.host.hasBattery) then ''"battery",'' else ""}
+          		"tray",
+          		"clock"
+          	],
       		${sharedConfig}
       	}
       	'';
@@ -82,6 +92,10 @@ in
       		}
       		#clock {
       			padding: 0px 10px;
+      		}
+      		#custom.overview{
+      		  min-width: 5px;
+      		  background-color: ${colors.palette.primary.hex};
       		}
       	'';
     home.packages = with pkgs; [

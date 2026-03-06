@@ -13,7 +13,6 @@
       obs.enable = true;
       steam.enable = true;
       edhm.enable = true;
-      niri.enable = true;
     };
     home-manager = {
       users."${config.host.mainUser}" = {
