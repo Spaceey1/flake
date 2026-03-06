@@ -63,6 +63,7 @@ in
           forceSSL = true;
           locations."/_matrix".proxyPass = "http://[::1]:8008";
           locations."/_synapse/client".proxyPass = "http://[::1]:8008";
+          locations."/".extraConfig = "return 404;";
         };
 
         "${turnSub}" = {
