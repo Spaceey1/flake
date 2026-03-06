@@ -22,7 +22,7 @@
     };
   };
   config = lib.mkIf config.host.isDesktopSystem {
-    dconf.enable = true;
+    programs.dconf.enable = true;
     services.greetd = lib.mkIf (config.host.startupSession != null) {
       enable = true;
       settings = rec {
