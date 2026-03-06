@@ -15,6 +15,7 @@
       url = "github:Spaceey1/EDHM-Nix";
       inputs.nixpkgs.follows = "pkgs";
     };
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
