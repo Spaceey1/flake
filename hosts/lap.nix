@@ -2,6 +2,7 @@
 
 {
   programs.desktopGroup.enable = true;
+  programs.niri.enable = true;
 
   hardware.bluetooth.enable = true;
 
