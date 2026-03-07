@@ -75,7 +75,7 @@ in
         ns = ''
           nix-shell -p $argv
         '';
-        ds = ''
+        nd = ''
           nix develop -c fish
         '';
       };
