@@ -38,7 +38,7 @@ in
       		map ctrl+tab next_tab
       		map ctrl+shift+tab previous_tab
       		map ctrl+t new_tab_with_cwd
-      		map super+shift+return launch --cwd=current --type=os-window
+      		map super+shift+return launch --type=os-window --cwd=current --copy-env
       		font_family Caskaydia Mono
       		map ctrl+shift+v paste_from_clipboard
       		map ctrl+shift+c copy_to_clipboard
