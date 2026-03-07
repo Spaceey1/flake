@@ -77,7 +77,7 @@ in
         '';
         ds = ''
           nix develop -c fish
-        ''
+        '';
       };
     };
 
