@@ -1,7 +1,9 @@
 {
   inputs,
   pkgs,
-  config, ... }:
+  config,
+  ...
+}:
 
 {
   networking.domain = "scrapped.space";
@@ -41,7 +43,10 @@
     users."${config.host.mainUser}" = {
       dconf.enable = false;
       programs = {
-        fish.enable = true;
+        fish = {
+          enable = true;
+          promptColor = "b77e00";
+        };
         helix.enable = true;
         git.enable = true;
       };
