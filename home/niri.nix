@@ -11,7 +11,7 @@ let
   niriConfig = builtins.concatStringsSep "\n" (
     map (name: builtins.readFile (./niri/configs/${name})) (builtins.attrNames niriFiles)
   );
-  colors = import ../colors.nix;
+  colors = osConfig.theme;
   extraBinds = lib.flatten [
     (lib.optionals osConfig.vr.monado.enable ''Ctrl+Tab { spawn "${pkgs.wayvr}/bin/wayvrctl" "show-hide"; }'')
   ];

@@ -1,3 +1,4 @@
+{ lib, config, ... }:
 let
   hexDigitToInt =
     c:
@@ -44,32 +45,34 @@ let
       g = hexPairToInt (builtins.substring 2 2 cleanHex);
       b = hexPairToInt (builtins.substring 4 2 cleanHex);
     };
-  rawPalette = import ./palette.nix;
+  makeColorAttrFromHex =
+    hex:
+    let
+      rgb = hexToRgb hex;
+    in
+    {
+      hex = hex;
+      inherit rgb;
+      rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
+      rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
+    };
+  rawPalette = import ../palette.nix;
 in
 {
-  baseColors = builtins.mapAttrs (
-    name: value:
-    let
-      rgb = hexToRgb value;
-    in
-    {
-      hex = value;
-      inherit rgb;
-      rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
-      rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
-    }
-  ) rawPalette.rawPalette;
-
-  palette = builtins.mapAttrs (
-    name: value:
-    let
-      rgb = hexToRgb value;
-    in
-    {
-      hex = value;
-      inherit rgb;
-      rgbStr = "rgb(${toString rgb.r}, ${toString rgb.g}, ${toString rgb.b})";
-      rgbRaw = "${toString rgb.r},${toString rgb.g},${toString rgb.b}";
-    }
-  ) rawPalette.palette;
+  options.theme = {
+    baseColors = lib.mkOption {
+      default = { };
+    };
+    palette = lib.mkOption {
+      default = { };
+    };
+    makeColorAttrFromHex = lib.mkOption {
+      readOnly = true;
+    };
+  };
+  config = {
+    theme.makeColorAttrFromHex = makeColorAttrFromHex;
+    theme.baseColors = builtins.mapAttrs (name: value: (makeColorAttrFromHex value)) rawPalette.rawPalette;
+    theme.palette    = builtins.mapAttrs (name: value: (makeColorAttrFromHex value)) rawPalette.palette;
+  };
 }

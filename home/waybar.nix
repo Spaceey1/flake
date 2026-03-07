@@ -7,7 +7,7 @@ let
     },
     "layer": "top"
   '';
-  colors = import ../colors.nix;
+  colors = osConfig.theme;
 in
 {
   config = lib.mkIf config.programs.waybar.enable {

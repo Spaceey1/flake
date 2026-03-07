@@ -7,7 +7,7 @@
 }:
 
 let
-  colors = import ../colors.nix;
+  colors = osConfig.theme;
 in
 {
   config = lib.mkIf osConfig.host.isDesktopSystem {

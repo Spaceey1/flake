@@ -5,11 +5,14 @@
   lib,
   ...
 }:
+let
+  colors = osConfig.theme;
+in
 {
   options = {
     programs.fish.promptColor = lib.mkOption {
       type = lib.types.str;
-      default = "009999";
+      default = colors.palette.primary.hex;
       description = "The color of the prompt";
     };
   };
@@ -35,7 +38,7 @@
           						end
           			'';
         fish_prompt = ''
-          				string join ' ' -- (set_color -b ${config.programs.fish.promptColor}) (prompt_pwd) (set_color normal) ':3 '
+          				string join ' ' -- (set_color -b "${config.programs.fish.promptColor}") (prompt_pwd) (set_color normal) ':3 '
           			'';
 
         cf = ''
@@ -78,7 +81,6 @@
     # Required runtime dependencies
     home.packages = with pkgs; [
       zoxide
-      fastfetch
       skim
       mlocate
     ];

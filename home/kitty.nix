@@ -2,10 +2,11 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
 let
-  colors = import ../colors.nix;
+  colors = osConfig.theme;
 in
 {
   options.programs.kitty = {

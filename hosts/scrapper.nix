@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }:
 
@@ -12,6 +13,8 @@
     acceptTerms = true;
   };
   hardware.bluetooth.enable = true;
+
+  theme.palette.primary = config.theme.makeColorAttrFromHex config.theme.baseColors.orange.hex;
 
   services.logind.settings = {
     Login = {
@@ -45,10 +48,10 @@
       programs = {
         fish = {
           enable = true;
-          promptColor = "b77e00";
         };
         helix.enable = true;
         git.enable = true;
+        fastfetch.enable = true;
       };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";

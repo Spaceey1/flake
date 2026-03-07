@@ -2,11 +2,12 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
 
 let
-  colors = import ../colors.nix;
+  colors = osConfig.theme;
 in
 {
   config = lib.mkIf config.programs.helix.enable {
