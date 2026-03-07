@@ -13,6 +13,7 @@
     mainUser = "space";
     mainMonitor = "eDP-1";
     startupSession = "${pkgs.niri}/bin/niri-session";
+    hasBattery = true;
   };
 
   home-manager = {
