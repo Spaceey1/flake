@@ -25,6 +25,8 @@
     mainMonitor = "HDMI-A-2";
     startupSession = "${pkgs.niri}/bin/niri-session";
   };
+  services.logmein-hamachi.enable = true;
+  programs.haguichi.enable = true;
 
   home-manager = {
     users."${config.host.mainUser}" = {
