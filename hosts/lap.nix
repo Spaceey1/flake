@@ -6,6 +6,8 @@
 
   hardware.bluetooth.enable = true;
 
+theme.palette.primary = config.theme.makeColorAttrFromHex config.theme.baseColors.cyan.hex;
+
   host = {
     gpuType = "intel";
     swapSize = 4 * 1024;

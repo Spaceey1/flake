@@ -6,11 +6,11 @@ let
     black = "#020202";
     red = "#f0318f";
     green = "#41d95a";
-    yellow = "#ffff4d";
+    yellow = "#d9f86e";
     orange = "#e49342";
     blue = "#4d97ff";
     magenta = "#a64dff";
-    cyan = "#d9f86e";
+    cyan = "#009999";
   };
 in
 {

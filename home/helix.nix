@@ -95,7 +95,7 @@ in
             modifiers = [ "underlined" ];
           };
           "string" = colors.baseColors.red.hex;
-          "variable.other.member" = colors.baseColors.cyan.hex;
+          "variable.other.member" = colors.baseColors.yellow.hex;
           "constant.character.escape" = colors.baseColors.orange.hex;
           "function" = colors.baseColors.yellow.hex;
           "variable.function" = colors.baseColors.yellow.hex;
