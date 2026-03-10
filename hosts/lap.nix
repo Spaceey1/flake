@@ -21,16 +21,15 @@ theme.palette.primary = config.theme.makeColorAttrFromHex config.theme.baseColor
   home-manager = {
     users."${config.host.mainUser}" = {
       programs = {
-        mango.wallpaper = ../home/wallpapers/tri.png;
         niri = {
-          wallpaper = ../home/wallpapers/tri.png;
+          wallpaper = ../home/wallpapers/for.png;
           animations = {
             enable = true;
             open = ../home/niri/shaders/open.frag;
             close = ../home/niri/shaders/close.frag;
           };
         };
-        hyprlock.lockImage = ../home/wallpapers/tri.png;
+        hyprlock.lockImage = ../home/wallpapers/for.png;
       };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";
