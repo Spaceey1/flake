@@ -27,6 +27,7 @@
   };
   services.logmein-hamachi.enable = true;
   programs.haguichi.enable = true;
+  services.flatpak.enable = true;
 
   home-manager = {
     users."${config.host.mainUser}" = {
