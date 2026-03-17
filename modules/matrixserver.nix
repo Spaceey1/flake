@@ -49,6 +49,7 @@ in
 
     services.nginx = {
       enable = true;
+      clientMaxBodySize = "10G";
       virtualHosts = {
         "${rootDomain}" = {
           enableACME = true;
@@ -78,6 +79,7 @@ in
       extraConfigFiles = [ "/var/lib/secrets/synapse-secrets.yaml" ];
       settings = {
         presence.enabled = true;
+        max_upload_size = "10G";
         server_name = rootDomain;
         public_baseurl = "https://${matrixSub}";
         turn_uris = [
