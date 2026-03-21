@@ -149,6 +149,8 @@ in
       realm = turnSub;
       use-auth-secret = true;
       static-auth-secret-file = "/var/lib/secrets/turn-secret";
+      min-port = 49152;
+      max-port = 65535;
       cert = "/var/lib/acme/${turnSub}/full.pem";
       pkey = "/var/lib/acme/${turnSub}/key.pem";
     };
@@ -167,8 +169,8 @@ in
       ];
       allowedUDPPortRanges = [
         {
-          from = 49152;
-          to = 65535;
+          from = config.services.coturn.min-port;
+          to = config.services.coturn.max-port;
         }
       ];
     };

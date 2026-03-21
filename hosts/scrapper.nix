@@ -9,6 +9,33 @@
 {
   networking.domain = "scrapped.space";
   services.matrix-synapse.enable = true;
+  systemd.tmpfiles.rules = [
+    "d ${config.services.filebrowser.settings.root} 0750 filebrowser filebrowser -"
+  ];
+  services.filebrowser = {
+    enable = true;
+    settings = {
+      port = 8080;
+      address = "localhost";
+      root = "/var/lib/public";
+    };
+    # database = "/var/lib/filebrowser/filebrowser.db";
+    openFirewall = true;
+  };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "files.${config.networking.domain}" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString config.services.filebrowser.settings.port}";
+        };
+        enableACME = true;
+        forceSSL = true;
+      };
+    };
+  };
+
   security.acme = {
     acceptTerms = true;
   };
