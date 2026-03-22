@@ -11,6 +11,7 @@
   services.matrix-synapse.enable = true;
   systemd.tmpfiles.rules = [
     "d ${config.services.filebrowser.settings.root} 0750 filebrowser filebrowser -"
+    "d /var/lib/public/users/Space/Overte 2755 filebrowser filebrowser -"
   ];
   services.filebrowser = {
     enable = true;
@@ -19,7 +20,6 @@
       address = "localhost";
       root = "/var/lib/public";
     };
-    # database = "/var/lib/filebrowser/filebrowser.db";
     openFirewall = true;
   };
 
@@ -30,11 +30,17 @@
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.filebrowser.settings.port}";
         };
+        locations."/overte/" = {
+          alias = "${config.services.filebrowser.settings.root}/users/Space/Overte/";
+          extraConfig = ''allow all;'';
+        };
         enableACME = true;
         forceSSL = true;
       };
     };
   };
+  systemd.services.filebrowser.serviceConfig.UMask = lib.mkForce "0022";
+  users.users.nginx.extraGroups = [ "filebrowser" ];
 
   security.acme = {
     acceptTerms = true;
