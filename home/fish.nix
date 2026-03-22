@@ -59,13 +59,19 @@ in
         fish_greeting = lib.mkIf config.programs.fastfetch.enable ''
           ${pkgs.fastfetch}/bin/fastfetch
         '';
-        nixre = ''
-          if sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix#${osConfig.networking.hostName}
-            ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Success"
+        nixre =
+          if osConfig.host.isDesktopSystem then
+            ''
+              if sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix#${osConfig.networking.hostName}
+                ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Success"
+              else
+                ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Fail"       
+              end
+            ''
           else
-             ${pkgs.libnotify}/bin/notify-send "NixOS rebuild" "Fail"       
-          end
-        '';
+            ''
+              sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix#${osConfig.networking.hostName}
+            '';
         openminecraft = ''
           sudo iptables -I INPUT -p tcp --dport 25565 -j ACCEPT
         '';
