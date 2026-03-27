@@ -8,6 +8,10 @@
 
 {
   networking.domain = "scrapped.space";
+  networking.firewall = {
+    allowedTCPPorts = [ 25565 ];
+    allowedUDPPorts = [ 25565 ];
+  };
   services.matrix-synapse.enable = true;
   systemd.tmpfiles.rules = [
     "d ${config.services.filebrowser.settings.root} 0750 filebrowser filebrowser -"
@@ -32,7 +36,7 @@
         };
         locations."/overte/" = {
           alias = "${config.services.filebrowser.settings.root}/users/Space/Overte/";
-          extraConfig = ''allow all;'';
+          extraConfig = "allow all;";
         };
         enableACME = true;
         forceSSL = true;
