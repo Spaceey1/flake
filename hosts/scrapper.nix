@@ -41,6 +41,13 @@
         enableACME = true;
         forceSSL = true;
       };
+      "resoniteassets.${config.networking.domain}" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:5819/";
+        };
+        enableACME = true;
+        forceSSL = true;
+      };
     };
   };
   systemd.services.filebrowser.serviceConfig.UMask = lib.mkForce "0022";
