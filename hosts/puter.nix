@@ -45,7 +45,11 @@
       };
       home.username = "${config.host.mainUser}";
       home.homeDirectory = "/home/${config.host.mainUser}";
-      home.packages = [ pkgs.blender pkgs.bs-manager ];
+      home.packages = [
+        pkgs.blender
+        pkgs.bs-manager
+        pkgs.noita-proxy
+      ];
     };
   };
 }

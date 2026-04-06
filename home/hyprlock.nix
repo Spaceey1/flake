@@ -30,7 +30,12 @@
             if (config.programs.hyprlock.lockImage == null) then
               "screenshot"
             else
-              toString config.programs.hyprlock.lockImage;
+              toString (
+                builtins.path {
+                  name = "background";
+                  path = config.programs.hyprlock.lockImage;
+                }
+              );
           blur_passes = 3;
           blur_size = 3;
         }
@@ -48,7 +53,7 @@
           inner_color = "0x131313ff";
           outer_color = "0xcdc885ff";
           outline_thickness = 1;
-          placeholder_text = ''Password...'';
+          placeholder_text = "Password...";
           shadow_passes = 2;
           rounding = 8;
         }
