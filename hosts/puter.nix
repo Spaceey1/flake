@@ -25,10 +25,11 @@
     mainMonitor = "HDMI-A-2";
     startupSession = "${pkgs.niri}/bin/niri-session";
   };
-  services.logmein-hamachi.enable = true;
-  programs.haguichi.enable = true;
   services.flatpak.enable = true;
-
+  services.hardware.openrgb = {
+    enable = true;
+    startupProfile = "startup";
+  };
   home-manager = {
     users."${config.host.mainUser}" = {
       programs = {

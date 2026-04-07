@@ -45,12 +45,12 @@
           pkgs.wl-clipboard
           pkgs.xwayland-satellite
           pkgs.spotifywm
+          pkgs.spicetify-cli
           pkgs.playerctl
           pkgs.fastfetch
           pkgs.zoxide
           pkgs.wleave
           pkgs.pwvucontrol
-          pkgs.openrgb
           pkgs.btop-cuda
           pkgs.hyprlock
           pkgs.nemo
