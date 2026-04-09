@@ -34,6 +34,7 @@
           git.enable = true;
         };
         home.packages = [
+          pkgs.easyeffects
           pkgs.element-desktop
           pkgs.teamspeak6-client
           pkgs.wget
