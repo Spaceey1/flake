@@ -66,7 +66,7 @@ in
       		#waybar {
       			background-color: ${colors.palette.background.hex};
       			color: ${colors.palette.text.hex};
-      			font-family: "Commit Mono Nerd Font"
+      			font-family: "Commit Mono Nerd Font";
       		}
       		#workspaces button {
       			padding: 0 5px;
